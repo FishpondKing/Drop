@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">点滴</string>
+    <string name="bottom_bar_culture">文化</string>
+    <string name="bottom_bar_money">财务</string>
+    <string name="bottom_bar_cleaning">值日</string>
+    <string name="bottom_bar_message">消息</string>
+    <string name="bottom_bar_more_options">更多</string>
+    <string-array name="tab_layout_culture">
+        <item>宿舍简介</item>
+        <item>宿舍活动</item>
+        <item>时间轴</item>
+    </string-array>
+    <string-array name="tab_layout_message">
+        <item>通知</item>
+        <item>留言板</item>
+    </string-array>
+    <string name="welcome_guide_button_signin">注册</string>
+    <string name="welcome_guide_button_login">登录</string>
+</resources>
