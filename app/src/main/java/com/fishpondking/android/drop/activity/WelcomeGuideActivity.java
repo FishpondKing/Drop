@@ -21,7 +21,7 @@ import java.util.List;
  * Author: FishpondKing
  * Date: 2016/11/9:10:13
  * Email: song511653502@gmail.com
- * Description:
+ * Description: 引导页
  */
 
 public class WelcomeGuideActivity extends BaseActivity {
@@ -72,9 +72,9 @@ public class WelcomeGuideActivity extends BaseActivity {
 
         initDots();
 
-/*        mSigninButton = (Button) findViewById(R.id.button_welcome_guide_signin);
+        mSigninButton = (Button) findViewById(R.id.button_welcome_guide_signin);
 
-        mLoginButton = (Button) findViewById(R.id.button_welcome_guide_login);*/
+        mLoginButton = (Button) findViewById(R.id.button_welcome_guide_login);
 
     }
 
@@ -98,10 +98,10 @@ public class WelcomeGuideActivity extends BaseActivity {
     }
 
     /**
-     * Method:
-     * Description:
-     * Param:
-     * Return:
+     * Method: setCurrentDot(int position)
+     * Description: 设置小圆点的位置为当前引导图片位置
+     * Param: position 当前引导页图片位置
+     * Return: void
      * Author: FishpondKing
      * Date: 2016/11/10:18:19
      */
