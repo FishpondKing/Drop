@@ -22,28 +22,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:padding="10dp"
+            android:padding="5dp"
             android:src="@drawable/dot_selector"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:padding="10dp"
+            android:padding="5dp"
             android:src="@drawable/dot_selector"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:padding="10dp"
+            android:padding="5dp"
             android:src="@drawable/dot_selector"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:padding="10dp"
+            android:padding="5dp"
             android:src="@drawable/dot_selector"/>
 
     </LinearLayout>
@@ -55,26 +55,30 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp">
 
         <Button
             android:id="@+id/button_welcome_guide_signin"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            android:text="@string/welcome_guide_button_signin"
+            android:layout_weight="1"
+            android:text="@string/common_button_signin"
             android:textSize="20sp"
             android:textColor="@color/grey200"
             android:background="@color/blue500"/>
 
         <Button
             android:id="@+id/button_welcome_guide_login"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
-            android:text="@string/welcome_guide_button_login"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="@string/common_button_login"
             android:textSize="20sp"
             android:textColor="@color/grey200"
-            android:background="@color/blue500"
-            android:layout_marginLeft="10dp"/>
+            android:background="@color/blue500"/>
 
     </LinearLayout>
 

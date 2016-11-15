@@ -14,6 +14,16 @@
         <item>通知</item>
         <item>留言板</item>
     </string-array>
-    <string name="welcome_guide_button_signin">注册</string>
-    <string name="welcome_guide_button_login">登录</string>
+    <string name="common_button_signin">注册</string>
+    <string name="common_button_login">登录</string>
+    <string name="login_user_tel">手机号</string>
+    <string name="login_user_password">密码</string>
+    <string name="login_forget_password">忘记密码?</string>
+    <string name="login_other_style">其他方式登录</string>
+    <string name="signin_user_tel">手机号</string>
+    <string name="signin_get_validate_code">获取验证码</string>
+    <string name="signin_validate_code">验证码</string>
+    <string name="signin_user_name">姓名</string>
+    <string name="signin_user_password">密码</string>
+    <string name="signin_user_password_check">确认密码</string>
 </resources>

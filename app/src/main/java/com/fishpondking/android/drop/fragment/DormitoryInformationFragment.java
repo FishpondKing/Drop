@@ -19,8 +19,8 @@ import com.fishpondking.android.drop.R;
 
 public class DormitoryInformationFragment extends Fragment {
 
-    View mView;
-    TextView mTextView;
+    private View mView;
+    private TextView mTextView;
 
     public static DormitoryInformationFragment newInstance(){
         DormitoryInformationFragment dormitoryInformationFragment = new DormitoryInformationFragment();

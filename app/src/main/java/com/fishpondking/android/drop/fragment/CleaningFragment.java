@@ -19,8 +19,8 @@ import com.fishpondking.android.drop.R;
 
 public class CleaningFragment extends Fragment {
 
-    View mView;
-    TextView mTextView;
+    private View mView;
+    private TextView mTextView;
 
     public static CleaningFragment newInstance(){
         CleaningFragment cleaningFragment = new CleaningFragment();

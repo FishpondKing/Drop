@@ -19,8 +19,8 @@ import com.fishpondking.android.drop.R;
 
 public class TimelineFragment extends Fragment {
 
-    View mView;
-    TextView mTextView;
+    private View mView;
+    private TextView mTextView;
 
     public static TimelineFragment newInstance() {
         TimelineFragment timelineFragment = new TimelineFragment();

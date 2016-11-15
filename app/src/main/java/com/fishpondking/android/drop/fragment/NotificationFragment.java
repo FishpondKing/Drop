@@ -19,8 +19,8 @@ import com.fishpondking.android.drop.R;
 
 public class NotificationFragment extends Fragment {
 
-    View mView;
-    TextView mTextView;
+    private View mView;
+    private TextView mTextView;
 
     public static NotificationFragment newInstance(){
         NotificationFragment notificationFragment = new NotificationFragment();

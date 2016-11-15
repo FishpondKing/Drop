@@ -19,8 +19,8 @@ import com.fishpondking.android.drop.R;
 
 public class MoneyFragment extends Fragment {
 
-    View mView;
-    TextView mTextView;
+    private View mView;
+    private TextView mTextView;
 
     public static MoneyFragment newInstance() {
         MoneyFragment moneyFragment = new MoneyFragment();

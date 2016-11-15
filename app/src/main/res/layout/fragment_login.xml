@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--用户手机号-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ti_layout_login_user_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ti_edit_text_login_user_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_user_tel"
+            android:inputType="phone"
+            android:textColorHint="@color/grey500"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--用户密码-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ti_layout_login_user_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ti_layout_login_user_tel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ti_edit_text_login_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_user_password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/grey500"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--登录按钮-->
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ti_layout_login_user_password"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/blue500"
+        android:text="@string/common_button_login"/>
+
+    <!--忘记密码-->
+    <TextView
+        android:id="@+id/text_view_forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_login"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/grey500"
+        android:text="@string/login_forget_password"/>
+
+    <!--其他方式登录分割线-->
+    <TextView
+        android:id="@+id/text_view_other_login_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/relative_layout_login_other_style"
+        android:layout_marginBottom="10dp"
+        android:text="@string/login_other_style"/>
+
+    <!--其他方式登录按钮-->
+    <RelativeLayout
+        android:id="@+id/relative_layout_login_other_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        >
+
+        <ImageButton
+            android:id="@+id/image_button_qq_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_bottom_bar_culture"/>
+
+        <ImageButton
+            android:id="@+id/image_button_weibo_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_bottom_bar_culture"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
