@@ -68,41 +68,50 @@
         android:textColor="@color/grey500"
         android:text="@string/login_forget_password"/>
 
-    <!--其他方式登录分割线-->
-    <TextView
-        android:id="@+id/text_view_other_login_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/relative_layout_login_other_style"
-        android:layout_marginBottom="10dp"
-        android:text="@string/login_other_style"/>
 
-    <!--其他方式登录按钮-->
-    <RelativeLayout
-        android:id="@+id/relative_layout_login_other_style"
+
+    <!--其他方式登录-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        >
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
-        <ImageButton
-            android:id="@+id/image_button_qq_login"
+        <!--其他方式登录分割线-->
+        <TextView
+            android:id="@+id/text_view_other_login_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_bottom_bar_culture"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="@string/login_other_style"/>
 
-        <ImageButton
-            android:id="@+id/image_button_weibo_login"
-            android:layout_width="wrap_content"
+        <!--其他方式登录按钮-->
+        <RelativeLayout
+            android:id="@+id/relative_layout_login_other_style"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_bottom_bar_culture"/>
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            >
 
-    </RelativeLayout>
+            <ImageButton
+                android:id="@+id/image_button_qq_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_bottom_bar_culture"/>
+
+            <ImageButton
+                android:id="@+id/image_button_weibo_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_bottom_bar_culture"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

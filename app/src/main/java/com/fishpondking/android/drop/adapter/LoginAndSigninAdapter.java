@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.fishpondking.android.drop.R;
+import com.fishpondking.android.drop.fragment.LoginFragment;
+import com.fishpondking.android.drop.fragment.SigninFragment;
 import com.fishpondking.android.drop.utils.TabLayoutPagerAdapter;
 
 import java.util.ArrayList;
@@ -19,14 +21,13 @@ import java.util.List;
 
 public class LoginAndSigninAdapter extends TabLayoutPagerAdapter {
     public LoginAndSigninAdapter(Context context, FragmentManager fragmentManager) {
-        super(context, fragmentManager, R.array.tab_layout_culture);
+        super(context, fragmentManager, R.array.tab_layout_login_and_signin);
     }
 
     public List<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
-        fragments.add(DormitoryInformationFragment.newInstance());
-        fragments.add(DormitoryActivitiesFragment.newInstance());
-        fragments.add(TimelineFragment.newInstance());
+        fragments.add(LoginFragment.newInstance());
+        fragments.add(SigninFragment.newInstance());
         return fragments;
     }
 }

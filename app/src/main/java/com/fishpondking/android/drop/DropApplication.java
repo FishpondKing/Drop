@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.avos.avoscloud.AVOSCloud;
 
+//import com.avos.avoscloud.AVOSCloud;
+
 /**
  * Author: FishpondKing
  * Date: 2016/11/13:9:41

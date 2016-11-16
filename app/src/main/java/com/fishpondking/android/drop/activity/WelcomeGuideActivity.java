@@ -24,7 +24,7 @@ import java.util.List;
  * Description: 引导页
  */
 
-public class WelcomeGuideActivity extends BaseActivity {
+public class WelcomeGuideActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = WelcomeGuideActivity.class.getSimpleName();
     //引导页图片资源
@@ -73,8 +73,10 @@ public class WelcomeGuideActivity extends BaseActivity {
         initDots();
 
         mSigninButton = (Button) findViewById(R.id.button_welcome_guide_signin);
+        mSigninButton.setOnClickListener(this);
 
         mLoginButton = (Button) findViewById(R.id.button_welcome_guide_login);
+        mLoginButton.setOnClickListener(this);
 
     }
 
@@ -130,4 +132,14 @@ public class WelcomeGuideActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_welcome_guide_login:
+                LoginAndSigninActivity.activityStart(this, 0);
+            case R.id.button_welcome_guide_signin:
+                LoginAndSigninActivity.activityStart(this, 1);
+            default:
+        }
+    }
 }

@@ -26,4 +26,8 @@
     <string name="signin_user_name">姓名</string>
     <string name="signin_user_password">密码</string>
     <string name="signin_user_password_check">确认密码</string>
+    <string-array name="tab_layout_login_and_signin">
+        <item>登录</item>
+        <item>注册</item>
+    </string-array>
 </resources>
