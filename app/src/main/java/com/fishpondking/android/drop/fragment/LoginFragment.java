@@ -1,5 +1,6 @@
 package com.fishpondking.android.drop.fragment;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.fishpondking.android.drop.R;
+import com.fishpondking.android.drop.listener.UserTelTextChangedListener;
 
 /**
  * Author: FishpondKing
@@ -44,6 +46,8 @@ public class LoginFragment extends Fragment {
         mView = inflater.inflate(R.layout.fragment_login, container, false);
 
         mTiEditTextTel = (TextInputEditText) mView.findViewById(R.id.ti_edit_text_login_user_tel);
+        mTiEditTextTel.addTextChangedListener(new UserTelTextChangedListener(mTiEditTextTel,
+                getActivity().getResources().getString(R.string.user_tel_wrong)));
 
         mTiEditTextPassword =
                 (TextInputEditText) mView.findViewById(R.id.ti_edit_text_login_user_password);

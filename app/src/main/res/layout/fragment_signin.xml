@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/signin_user_tel"
                 android:inputType="phone"
+                android:maxLength="11"
                 android:textColorHint="@color/grey500"/>
 
         </android.support.design.widget.TextInputLayout>

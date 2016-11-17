@@ -30,4 +30,6 @@
         <item>登录</item>
         <item>注册</item>
     </string-array>
+    <string name="user_tel_wrong">请输入正确的手机号</string>
+
 </resources>
