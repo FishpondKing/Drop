@@ -53,9 +53,13 @@ public class ConstUtils {
      */
     public static final String REGEX_ZH = "^[\\u4e00-\\u9fa5]+$";
     /**
-     * 正则：用户名，取值范围为a-z,A-Z,0-9,"_",汉字，不能以"_"结尾,用户名必须是6-20位
+     * 正则：用户名，取值范围为a-z,A-Z,0-9,"_",汉字，不能以"_"结尾,用户名为1~12位
      */
-    public static final String REGEX_USERNAME = "^[\\w\\u4e00-\\u9fa5]{6,20}(?<!_)$";
+    public static final String REGEX_USERNAME = "^[\\w\\u4e00-\\u9fa5]{1,12}(?<!_)$";
+    /**
+     * 正则：用户密码，取值范围为a-z,A-Z,0-9,用户名必须是6-12位
+     */
+    public static final String REGEX_USERPASSWORD = "^[a-zA-Z0-9]{6,12}$";
     /**
      * 正则：yyyy-MM-dd格式的日期校验，已考虑平闰年
      */

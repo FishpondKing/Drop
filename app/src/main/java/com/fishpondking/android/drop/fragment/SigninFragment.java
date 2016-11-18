@@ -17,6 +17,8 @@ import com.avos.avoscloud.SignUpCallback;
 import com.fishpondking.android.drop.R;
 import com.fishpondking.android.drop.engine.SingletonUser;
 import com.fishpondking.android.drop.listener.GetValidateCodeListener;
+import com.fishpondking.android.drop.listener.UserNameChangedListener;
+import com.fishpondking.android.drop.listener.UserPasswordChangedListener;
 import com.fishpondking.android.drop.listener.UserTelTextChangedListener;
 
 /**
@@ -26,15 +28,15 @@ import com.fishpondking.android.drop.listener.UserTelTextChangedListener;
  * Description:
  */
 
-public class SigninFragment extends Fragment implements View.OnClickListener {
+public class SigninFragment extends Fragment{
 
     private View mView;
     private TextInputEditText mTiEditTextTel;
-    private Button mButtonGetValidateCode;
-    private TextInputEditText mTiEditTextValidateCode;
     private TextInputEditText mTiEditTextName;
     private TextInputEditText mTiEditTextPassword;
     private TextInputEditText mTiEditTextPasswordCheck;
+    private TextInputEditText mTiEditTextValidateCode;
+    private Button mButtonGetValidateCode;
     private Button mButtonSignin;
 
     public static SigninFragment newInstance() {
@@ -52,21 +54,31 @@ public class SigninFragment extends Fragment implements View.OnClickListener {
         mTiEditTextTel.addTextChangedListener(new UserTelTextChangedListener(mTiEditTextTel,
                 getActivity().getResources().getString(R.string.user_tel_wrong)));
 
-        mButtonGetValidateCode = (Button) mView.findViewById(R.id.button_signin_get_validate_code);
-        mButtonGetValidateCode.setOnClickListener(this);
+        mTiEditTextName =
+                (TextInputEditText) mView.findViewById(R.id.ti_edit_text_signin_user_name);
+        mTiEditTextName.addTextChangedListener(new UserNameChangedListener(mTiEditTextName,
+                getActivity().getResources().getString(R.string.user_name_wrong)));
+
+        mTiEditTextPassword =
+                (TextInputEditText) mView.findViewById(R.id.ti_edit_text_signin_user_password);
+        mTiEditTextPassword.addTextChangedListener(
+                new UserPasswordChangedListener(mTiEditTextPassword, getActivity().getResources()
+                        .getString(R.string.user_password_wrong)));
+
+        mTiEditTextPasswordCheck =
+                (TextInputEditText)
+                        mView.findViewById(R.id.ti_edit_text_signin_user_password_check);
 
         mTiEditTextValidateCode =
                 (TextInputEditText) mView.findViewById(R.id.ti_edit_text_signin_validate_code);
 
-        mTiEditTextName =
-                (TextInputEditText) mView.findViewById(R.id.ti_edit_text_signin_user_name);
-
-        mTiEditTextName =
-                (TextInputEditText) mView.findViewById(R.id.ti_edit_text_signin_user_password);
-
-        mTiEditTextName =
-                (TextInputEditText)
-                        mView.findViewById(R.id.ti_edit_text_signin_user_password_check);
+        mButtonGetValidateCode = (Button) mView.findViewById(R.id.button_signin_get_validate_code);
+        mButtonGetValidateCode.setOnClickListener(new GetValidateCodeListener(getActivity(),
+                mButtonGetValidateCode,
+                mTiEditTextTel.getText().toString(),
+                mTiEditTextName.getText().toString(),
+                mTiEditTextPassword.getText().toString(),
+                mTiEditTextPasswordCheck.getText().toString()));
 
         mButtonSignin = (Button) mView.findViewById(R.id.button_signin);
 
@@ -74,29 +86,8 @@ public class SigninFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.button_signin_get_validate_code:
-                Log.d("SMS","验证码");
-                Toast.makeText(getActivity(),"hahaha",Toast.LENGTH_SHORT).show();
-                //获取验证码，必须同时具有用户名，密码，手机号
-                SingletonUser.getInstance().setUsername("hahaha");
-                SingletonUser.getInstance().setMobilePhoneNumber(mTiEditTextTel.getText().toString());
-                SingletonUser.getInstance().setPassword("123456");
-                SingletonUser.getInstance().signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(AVException e) {
-                        if (e == null) {
-                            // successfully
-                            Toast.makeText(getActivity(),"验证码获取成功",Toast.LENGTH_SHORT).show();
-                            Log.d("SMS","验证码获取成功");
-                        } else {
-                            // failed
-                            Log.d("SMS","验证码获取失败");
-                            Toast.makeText(getActivity(),"验证码获取失败",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
     }
 }

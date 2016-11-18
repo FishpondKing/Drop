@@ -112,6 +112,17 @@ public class RegexUtils {
     }
 
     /**
+     * 验证用户密码
+     * <p>取值范围为a-z,A-Z,0-9,用户密码必须是6-12位</p>
+     *
+     * @param input 待验证文本
+     * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     */
+    public static boolean isUserpassword(CharSequence input) {
+        return isMatch(REGEX_USERPASSWORD, input);
+    }
+
+    /**
      * 验证yyyy-MM-dd格式的日期校验，已考虑平闰年
      *
      * @param input 待验证文本

@@ -31,5 +31,9 @@
         <item>注册</item>
     </string-array>
     <string name="user_tel_wrong">请输入正确的手机号</string>
-
+    <string name="user_name_wrong">用户名为数字，字母，汉字，长度为1~12位</string>
+    <string name="user_password_wrong">密码为数字，字母，长度为6~12位</string>
+    <string name="user_password_check_wrong">确认密码与密码不一致</string>
+    <string name="get_validate_code_success">获取验证码成功</string>
+    <string name="get_validate_code_fail">获取验证码失败</string>
 </resources>
