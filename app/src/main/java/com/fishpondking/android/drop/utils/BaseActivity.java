@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.avos.avoscloud.AVException;
-
 /**
  * Author: FishpondKing
  * Date: 2016/11/3:10:51
@@ -25,11 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityCollector.addActivity(this);
 
         initVariables();
-        try {
-            initViews(savedInstanceState);
-        } catch (AVException e) {
-            e.printStackTrace();
-        }
+        initViews(savedInstanceState);
         loadData();
 
     }
@@ -54,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Date: 2016/11/3:15:25
      */
 
-    protected abstract void initViews(Bundle savedInstanceState) throws AVException;
+    protected abstract void initViews(Bundle savedInstanceState);
     
     /**
      * Method: loadData();

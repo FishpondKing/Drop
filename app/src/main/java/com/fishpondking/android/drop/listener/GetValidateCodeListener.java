@@ -1,7 +1,6 @@
 package com.fishpondking.android.drop.listener;
 
 import android.content.Context;
-import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -22,72 +21,57 @@ import com.fishpondking.android.drop.utils.SendSmsTimerUtils;
 
 public class GetValidateCodeListener implements View.OnClickListener {
 
-    private Context mContext;
-    private Button mButtonGetValidateCode;
-    private TextInputEditText mTiEditTextUserTel;
-    private TextInputEditText mTiEditTextUserName;
-    private TextInputEditText mTiEditTextUserPassword;
-    private TextInputEditText mTiEditTextUserPasswordCheck;
-    private Button mButtonSignin;
-
-    private SingletonUser mSingletonUser;
+    private Button mButton;
     private String mUserTel;
     private String mUserName;
     private String mUserPassword;
     private String mUserPasswordCheck;
+    private SingletonUser mSingletonUser;
+    private Context mContext;
     private SendSmsTimerUtils mSendSmsTimerUtils;
 
 
-    public GetValidateCodeListener(Context context, Button getValidateCode,
-                                   TextInputEditText userTel,
-                                   TextInputEditText userName, TextInputEditText userPassword,
-                                   TextInputEditText userPasswordCheck,
-                                   Button signin) {
+    public GetValidateCodeListener(Context context, Button button,String userTel,String userName,
+                                   String userPassword, String userPasswordCheck){
         mContext = context;
-        mButtonGetValidateCode = getValidateCode;
-        mTiEditTextUserTel = userTel;
-        mTiEditTextUserName = userName;
-        mTiEditTextUserPassword = userPassword;
-        mTiEditTextUserPasswordCheck = userPasswordCheck;
-        mButtonSignin = signin;
-
+        mButton = button;
+        mUserTel = "13399801969";
+        mUserName = "song";
+        mUserPassword = "123456";
+        mUserPasswordCheck = "123456";
         mSingletonUser = SingletonUser.getInstance();
     }
 
     @Override
     public void onClick(View v) {
 
-        //获取各个TextInputEditBox中的值
-        mUserTel = mTiEditTextUserTel.getText().toString();
-        mUserName = mTiEditTextUserName.getText().toString();
-        mUserPassword = mTiEditTextUserPassword.getText().toString();
-        mUserPasswordCheck = mTiEditTextUserPasswordCheck.getText().toString();
+        Toast.makeText(mContext,mUserTel,Toast.LENGTH_SHORT).show();
 
-        //检查手机号码格式
-        if (RegexUtils.isMobileExact(mUserTel) == false) {
-            Toast.makeText(mContext, mContext.getResources()
-                    .getString(R.string.user_tel_wrong), Toast.LENGTH_SHORT).show();
+        //检查电话号码格式
+        if(RegexUtils.isMobileExact(mUserTel) == false){
+            Toast.makeText(mContext,mContext.getResources()
+                    .getString(R.string.user_tel_wrong),Toast.LENGTH_SHORT).show();
             return;
         }
 
         //检查用户名格式
-        if (RegexUtils.isUsername(mUserName) == false) {
-            Toast.makeText(mContext, mContext.getResources()
-                    .getString(R.string.user_name_wrong), Toast.LENGTH_SHORT).show();
+        if(RegexUtils.isUsername(mUserName) == false){
+            Toast.makeText(mContext,mContext.getResources()
+                    .getString(R.string.user_name_wrong),Toast.LENGTH_SHORT).show();
             return;
         }
 
         //检查用户密码格式
-        if (RegexUtils.isUserpassword(mUserPassword) == false) {
-            Toast.makeText(mContext, mContext.getResources()
-                    .getString(R.string.user_password_wrong), Toast.LENGTH_SHORT).show();
+        if(RegexUtils.isUserpassword(mUserPassword) == false){
+            Toast.makeText(mContext,mContext.getResources()
+                    .getString(R.string.user_password_wrong),Toast.LENGTH_SHORT).show();
             return;
         }
 
         //检查用户确认密码与密码是否一致
-        if (!mUserPasswordCheck.equals(mUserPassword)) {
-            Toast.makeText(mContext, mContext.getResources()
-                    .getString(R.string.user_password_check_wrong), Toast.LENGTH_SHORT).show();
+        if(!mUserPasswordCheck.equals(mUserPassword)){
+            Toast.makeText(mContext,mContext.getResources()
+                    .getString(R.string.user_password_check_wrong),Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -97,25 +81,21 @@ public class GetValidateCodeListener implements View.OnClickListener {
         mSingletonUser.put("userNickName", mUserName);
         mSingletonUser.setPassword(mUserPassword);
 
-        mSendSmsTimerUtils = new SendSmsTimerUtils(mButtonGetValidateCode, 20000, 1000,
-                R.color.blue500, R.color.grey500);
-
+        mSendSmsTimerUtils = new SendSmsTimerUtils(mButton, 20000, 1000,R.color.blue500,R.color.grey500);
         mSingletonUser.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(AVException e) {
                 if (e == null) {
-                    // 获取成功
-                    Toast.makeText(mContext, mContext.getResources()
-                            .getString(R.string.get_validate_code_success), Toast.LENGTH_SHORT)
+                    // successfully
+                    Toast.makeText(mContext,mContext.getResources()
+                            .getString(R.string.get_validate_code_success),Toast.LENGTH_SHORT)
                             .show();
                     //处理验证码按钮等待20s
                     mSendSmsTimerUtils.start();
-                    //设置“注册”按钮为可用
-                    mButtonSignin.setEnabled(true);
                 } else {
-                    // 获取失败
-                    Toast.makeText(mContext, mContext.getResources()
-                            .getString(R.string.get_validate_code_fail), Toast.LENGTH_SHORT)
+                    // failed
+                    Toast.makeText(mContext,mContext.getResources()
+                            .getString(R.string.get_validate_code_fail),Toast.LENGTH_SHORT)
                             .show();
                 }
             }

@@ -14,9 +14,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.fishpondking.android.drop.R;
-import com.fishpondking.android.drop.activity.QQLogin;
-import com.fishpondking.android.drop.activity.WeiboLogin;
-import com.fishpondking.android.drop.listener.LoginListener;
 import com.fishpondking.android.drop.listener.UserTelTextChangedListener;
 
 /**
@@ -58,24 +55,10 @@ public class LoginFragment extends Fragment {
         mTextViewForgetPassword = (TextView) mView.findViewById(R.id.text_view_forget_password);
 
         mButtonLogin = (Button) mView.findViewById(R.id.button_login);
-        mButtonLogin.setOnClickListener(new LoginListener(getActivity(), mButtonLogin,
-                mTiEditTextTel, mTiEditTextPassword));
 
         mImageButtonQQLogin = (ImageButton) mView.findViewById(R.id.image_button_qq_login);
-        mImageButtonQQLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                QQLogin.activityStart(getActivity());
-            }
-        });
 
         mImageButtonWeiboLogin = (ImageButton) mView.findViewById(R.id.image_button_weibo_login);
-        mImageButtonWeiboLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WeiboLogin.activityStart(getActivity());
-            }
-        });
 
         return mView;
     }
