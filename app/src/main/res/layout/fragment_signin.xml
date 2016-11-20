@@ -134,6 +134,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/blue500"
-        android:text="@string/common_button_signin"/>
+        android:text="@string/common_button_signin"
+        android:enabled="false"/>
 
 </RelativeLayout>

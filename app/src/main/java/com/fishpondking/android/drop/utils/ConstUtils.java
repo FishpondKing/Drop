@@ -61,6 +61,10 @@ public class ConstUtils {
      */
     public static final String REGEX_USERPASSWORD = "^[a-zA-Z0-9]{6,12}$";
     /**
+     * 正则：验证码，取值范围0-9，验证码必须是6位数字
+     */
+    public static final String REGEX_VALIDATECODE = "^[0-9]{6}$";
+    /**
      * 正则：yyyy-MM-dd格式的日期校验，已考虑平闰年
      */
     public static final String REGEX_DATE =

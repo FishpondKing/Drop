@@ -16,6 +16,8 @@
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
         <uses-permission android:name="android.permission.READ_PHONE_STATE" />
         <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        <uses-permission android:name="android.permission.VIBRATE"/>
 
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
@@ -27,6 +29,8 @@
         <activity android:name=".activity.WelcomeGuideActivity"/>
         <activity android:name=".activity.HomeActivity"/>
         <activity android:name=".activity.LoginAndSigninActivity"/>
+        <activity android:name=".activity.QQLogin"/>
+        <activity android:name=".activity.WeiboLogin"/>
 
          <!--实时通信模块、推送（均需要加入以下声明） START -->
          <!--实时通信模块、推送都要使用 PushService -->
@@ -40,6 +44,37 @@
         </receiver>
          <!--实时通信模块、推送 END -->
 
+        <!--第三方登录WebView-->
+        <activity
+            android:name="com.avos.sns.SNSWebActivity" >
+        </activity>
+
+        <!--QQ登录-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:noHistory="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
+        <!--微博登录-->
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
