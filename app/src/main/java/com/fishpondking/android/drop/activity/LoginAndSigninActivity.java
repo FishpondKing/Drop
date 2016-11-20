@@ -33,11 +33,10 @@ public class LoginAndSigninActivity extends BaseActivity {
 
     private int mLoginOrSignin;
 
-    public static Intent activityStart(Context context, int loginOrSignin) {
+    public static void activityStart(Context context, int loginOrSignin) {
         Intent intent = new Intent(context, LoginAndSigninActivity.class);
         intent.putExtra(EXTRA_LOGIN_OR_SIGNIN, loginOrSignin);
         context.startActivity(intent);
-        return intent;
     }
 
     @Override

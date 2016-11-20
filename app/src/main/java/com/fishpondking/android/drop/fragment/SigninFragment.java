@@ -4,19 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.SignUpCallback;
 import com.fishpondking.android.drop.R;
-import com.fishpondking.android.drop.engine.SingletonUser;
 import com.fishpondking.android.drop.listener.GetValidateCodeListener;
+import com.fishpondking.android.drop.listener.SigninListener;
 import com.fishpondking.android.drop.listener.UserNameChangedListener;
 import com.fishpondking.android.drop.listener.UserPasswordChangedListener;
 import com.fishpondking.android.drop.listener.UserTelTextChangedListener;
@@ -28,7 +23,7 @@ import com.fishpondking.android.drop.listener.UserTelTextChangedListener;
  * Description:
  */
 
-public class SigninFragment extends Fragment{
+public class SigninFragment extends Fragment {
 
     private View mView;
     private TextInputEditText mTiEditTextTel;
@@ -72,22 +67,16 @@ public class SigninFragment extends Fragment{
         mTiEditTextValidateCode =
                 (TextInputEditText) mView.findViewById(R.id.ti_edit_text_signin_validate_code);
 
+        mButtonSignin = (Button) mView.findViewById(R.id.button_signin);
+        mButtonSignin.setOnClickListener(new SigninListener(getActivity(),
+                mButtonSignin, mTiEditTextValidateCode));
+
         mButtonGetValidateCode = (Button) mView.findViewById(R.id.button_signin_get_validate_code);
         mButtonGetValidateCode.setOnClickListener(new GetValidateCodeListener(getActivity(),
-                mButtonGetValidateCode,
-                mTiEditTextTel.getText().toString(),
-                mTiEditTextName.getText().toString(),
-                mTiEditTextPassword.getText().toString(),
-                mTiEditTextPasswordCheck.getText().toString()));
-
-        mButtonSignin = (Button) mView.findViewById(R.id.button_signin);
+                mButtonGetValidateCode, mTiEditTextTel, mTiEditTextName, mTiEditTextPassword,
+                mTiEditTextPasswordCheck, mButtonSignin));
 
         return mView;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }
 }

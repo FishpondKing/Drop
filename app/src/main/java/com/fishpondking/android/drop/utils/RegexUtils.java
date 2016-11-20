@@ -123,6 +123,17 @@ public class RegexUtils {
     }
 
     /**
+     * 验证用户验证码
+     * <p>取值范围0-9，验证码必须是6位数字</p>
+     *
+     * @param input 待验证文本
+     * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     */
+    public static boolean isValidatecode(CharSequence input) {
+        return isMatch(REGEX_VALIDATECODE, input);
+    }
+
+    /**
      * 验证yyyy-MM-dd格式的日期校验，已考虑平闰年
      *
      * @param input 待验证文本
