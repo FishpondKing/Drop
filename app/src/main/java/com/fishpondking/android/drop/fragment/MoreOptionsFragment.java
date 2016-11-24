@@ -33,8 +33,6 @@ public class MoreOptionsFragment extends Fragment{
                              @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_more_options, container, false);
 
-        mTextView = (TextView) mView.findViewById(R.id.text_view_more_options);
-
         return mView;
     }
 }

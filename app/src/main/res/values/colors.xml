@@ -7,6 +7,7 @@
     <color name="grey300">#E0E0E0</color>
     <color name="grey400">#BDBDBD</color>
     <color name="grey500">#9E9E9E</color>
-    <color name="blue500">#2196F3</color>
+    <color name="blue500">#2196f3</color>
     <color name="blue700">#1976D2</color>
+    <color name="red500">#F44336</color>
 </resources>
