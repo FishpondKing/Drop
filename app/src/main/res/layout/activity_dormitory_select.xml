@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--加入寝室-->
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        app:cardElevation="2dp"
+        android:background="@color/grey200">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_join_dormitory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/join_dormitory"
+                android:textSize="20sp"
+                android:textColor="@color/grey500"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/ti_edit_text_dormitory_select_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dormitory_id"
+                    android:inputType="text"
+                    android:textColorHint="@color/grey500"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_dormitory_select_join"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/join"
+                android:layout_gravity="right"
+                android:textSize="15sp"
+                android:textColor="@color/grey200"
+                android:background="@color/blue500"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+    <!--加入寝室END-->
+
+    <!--创建寝室-->
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardElevation="2dp"
+        android:background="@color/grey200">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_create_dormitory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/create_dormitory"
+                android:textSize="20sp"
+                android:textColor="@color/grey500"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/ti_edit_text_dormitory_select_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dormitory_name"
+                    android:inputType="text"
+                    android:textColorHint="@color/grey500"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_dormitory_select_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/create"
+                android:layout_gravity="right"
+                android:textSize="15sp"
+                android:textColor="@color/grey200"
+                android:background="@color/blue500"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!--创建寝室END-->
+</LinearLayout>

@@ -41,6 +41,12 @@
     <string name="login_fail">登录失败</string>
     <string name="signin_success">注册成功</string>
     <string name="signin_fail">注册失败</string>
+    <string name="join">加入</string>
+    <string name="join_dormitory">加入寝室</string>
+    <string name="dormitory_id">寝室ID</string>
+    <string name="create">创建</string>
+    <string name="dormitory_name">寝室名</string>
+    <string name="create_dormitory">创建寝室</string>
     <string name="logout">注销</string>
     <string name="night_model">夜间模式</string>
     <string name="setting">设置</string>

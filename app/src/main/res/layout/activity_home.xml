@@ -22,7 +22,6 @@
         app:bnbMode="mode_fixed"
         app:bnbBackgroundStyle="background_style_static"
         app:bnbActiveColor="@color/blue700"
-        app:bnbInactiveColor="@color/grey500"
-        app:bnbBackgroundColor="@color/grey300"/>
+        app:bnbInactiveColor="@color/grey500"/>
 
 </LinearLayout>
