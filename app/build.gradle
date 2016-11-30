@@ -49,7 +49,11 @@ dependencies {
     // LeanCloud 应用内搜索包
     compile 'cn.leancloud.android:avoscloud-search:v3.+@aar'
     compile files('D:/Workspaces/Android/Drop/libs/weiboSDKCore_3.1.4.jar')
+
     compile 'com.squareup.picasso:picasso:2.5.2'
+    //圆形头像
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    //FloatingActionMenu
+    compile 'com.github.clans:fab:1.6.4'
 
 }

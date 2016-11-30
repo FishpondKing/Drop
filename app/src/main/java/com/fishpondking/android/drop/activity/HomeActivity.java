@@ -11,6 +11,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.fishpondking.android.drop.R;
 import com.fishpondking.android.drop.fragment.CleaningFragment;
 import com.fishpondking.android.drop.fragment.CultureFragment;
+import com.fishpondking.android.drop.fragment.DiaryFragment;
+import com.fishpondking.android.drop.fragment.LifeFragment;
 import com.fishpondking.android.drop.fragment.MessageFragment;
 import com.fishpondking.android.drop.fragment.MoneyFragment;
 import com.fishpondking.android.drop.fragment.MoreOptionsFragment;
@@ -34,9 +36,9 @@ public class HomeActivity extends BaseActivity
     private FragmentManager mFragmentManager;
     private Fragment mFragment;
     private BottomNavigationBar mBottomNavigationBar;
+    private DiaryFragment mDiaryFragment;
     private CultureFragment mCultureFragment;
-    private MoneyFragment mMoneyFragment;
-    private CleaningFragment mCleaningFragment;
+    private LifeFragment mLifeFragment;
     private MessageFragment mMessageFragment;
     private MoreOptionsFragment mMoreOptionsFragment;
 
@@ -50,9 +52,9 @@ public class HomeActivity extends BaseActivity
 
     @Override
     protected void initVariables() {
+        mDiaryFragment = DiaryFragment.newInstance();
         mCultureFragment = CultureFragment.newInstance();
-        mMoneyFragment = MoneyFragment.newInstance();
-        mCleaningFragment = CleaningFragment.newInstance();
+        mLifeFragment = LifeFragment.newInstance();
         mMessageFragment = MessageFragment.newInstance();
         mMoreOptionsFragment = MoreOptionsFragment.newInstance();
         mMainActivityFragments = getMainActivityFragments();
@@ -67,13 +69,13 @@ public class HomeActivity extends BaseActivity
 
         if (mFragment == null) {
             mFragmentManager.beginTransaction()
+                    .add(R.id.activity_main_fragment_container, mDiaryFragment)
                     .add(R.id.activity_main_fragment_container, mCultureFragment)
-                    .add(R.id.activity_main_fragment_container, mMoneyFragment)
-                    .add(R.id.activity_main_fragment_container, mCleaningFragment)
+                    .add(R.id.activity_main_fragment_container, mLifeFragment)
                     .add(R.id.activity_main_fragment_container, mMessageFragment)
                     .add(R.id.activity_main_fragment_container, mMoreOptionsFragment)
-                    .hide(mMoneyFragment)
-                    .hide(mCleaningFragment)
+                    .hide(mCultureFragment)
+                    .hide(mLifeFragment)
                     .hide(mMessageFragment)
                     .hide(mMoreOptionsFragment)
                     .commit();
@@ -82,12 +84,12 @@ public class HomeActivity extends BaseActivity
         mBottomNavigationBar =
                 (BottomNavigationBar) findViewById(R.id.activity_main_bottom_navigation_bar);
         mBottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_diary,
+                        R.string.bottom_bar_diary))
                 .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_culture,
                         R.string.bottom_bar_culture))
-                .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_money,
-                        R.string.bottom_bar_money))
-                .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_cleaning,
-                        R.string.bottom_bar_cleaning))
+                .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_life,
+                        R.string.bottom_bar_life))
                 .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_message_board,
                         R.string.bottom_bar_message))
                 .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_more,
@@ -105,9 +107,9 @@ public class HomeActivity extends BaseActivity
 
     private List<Fragment> getMainActivityFragments() {
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+        fragments.add(mDiaryFragment);
         fragments.add(mCultureFragment);
-        fragments.add(mMoneyFragment);
-        fragments.add(mCleaningFragment);
+        fragments.add(mLifeFragment);
         fragments.add(mMessageFragment);
         fragments.add(mMoreOptionsFragment);
         return fragments;

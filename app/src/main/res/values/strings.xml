@@ -1,14 +1,17 @@
 <resources>
     <string name="app_name">点滴</string>
+    <string name="bottom_bar_diary">日志</string>
     <string name="bottom_bar_culture">文化</string>
-    <string name="bottom_bar_money">财务</string>
-    <string name="bottom_bar_cleaning">值日</string>
+    <string name="bottom_bar_life">生活</string>
     <string name="bottom_bar_message">消息</string>
     <string name="bottom_bar_more_options">更多</string>
     <string-array name="tab_layout_culture">
         <item>宿舍简介</item>
         <item>宿舍活动</item>
-        <item>时间轴</item>
+    </string-array>
+    <string-array name="tab_layout_life">
+        <item>财务</item>
+        <item>值日</item>
     </string-array>
     <string-array name="tab_layout_message">
         <item>通知</item>

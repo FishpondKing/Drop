@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import com.fishpondking.android.drop.R;
 import com.fishpondking.android.drop.fragment.DormitoryActivitiesFragment;
 import com.fishpondking.android.drop.fragment.DormitoryInformationFragment;
-import com.fishpondking.android.drop.fragment.TimelineFragment;
 import com.fishpondking.android.drop.utils.TabLayoutPagerAdapter;
 
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ public class CulturePagerAdapter extends TabLayoutPagerAdapter {
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(DormitoryInformationFragment.newInstance());
         fragments.add(DormitoryActivitiesFragment.newInstance());
-        fragments.add(TimelineFragment.newInstance());
         return fragments;
     }
 
