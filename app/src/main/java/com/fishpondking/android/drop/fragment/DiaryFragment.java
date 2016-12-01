@@ -3,6 +3,7 @@ package com.fishpondking.android.drop.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,7 @@ public class DiaryFragment extends Fragment{
 
     private View mView;
     private Toolbar mToolbar;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
 
     public static DiaryFragment newInstance(){
@@ -46,11 +48,22 @@ public class DiaryFragment extends Fragment{
         mRecyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view_diary);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        mSwipeRefreshLayout = (SwipeRefreshLayout) mView.findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setProgressViewOffset(true, 50, 200);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.blue500);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.grey200);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //刷新动画开始后回调此方法
+            }
+        });
+
         return mView;
     }
 
     //自定义的ViewHolder
-    private class DiaryViewHolder extends RecyclerView.ViewHolder{
+    private class DiaryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView mImageViewPhoto;
         private TextView mTextViewTitle;
@@ -59,10 +72,16 @@ public class DiaryFragment extends Fragment{
 
         public DiaryViewHolder(View itemView){
             super(itemView);
+            itemView.setOnClickListener(this);
             mImageViewPhoto = (ImageView) itemView.findViewById(R.id.image_view_diary_photo);
             mTextViewTitle = (TextView) itemView.findViewById(R.id.text_view_diary_title);
             mTextViewDate = (TextView) itemView.findViewById(R.id.text_view_diary_date);
             mTextViewAuthor = (TextView) itemView.findViewById(R.id.text_view_diary_author);
+
+        }
+
+        @Override
+        public void onClick(View v) {
 
         }
     }
@@ -86,7 +105,7 @@ public class DiaryFragment extends Fragment{
         @Override
         public void onBindViewHolder(DiaryViewHolder holder, int position) {
             Diary diary = mDiaries.get(position);
-            holder.mImageViewPhoto.setImageBitmap();
+            //holder.mImageViewPhoto.setImageBitmap();
             holder.mTextViewTitle.setText(diary.getTitle());
             holder.mTextViewDate.setText(diary.getDate().toString());
             holder.mTextViewAuthor.setText(diary.getAuthor());
