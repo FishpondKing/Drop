@@ -50,8 +50,11 @@
     <string name="create">创建</string>
     <string name="dormitory_name">寝室名</string>
     <string name="create_dormitory">创建寝室</string>
+    <string name="create_dormitory_success">创建成功</string>
+    <string name="create_dormitory_fail">创建失败</string>
     <string name="logout">注销</string>
     <string name="night_model">夜间模式</string>
     <string name="setting">设置</string>
     <string name="report">意见反馈</string>
+
 </resources>

@@ -97,7 +97,7 @@ public class GetValidateCodeListener implements View.OnClickListener {
         mSingletonUser.put("userNickName", mUserName);
         mSingletonUser.setPassword(mUserPassword);
 
-        mSendSmsTimerUtils = new SendSmsTimerUtils(mButtonGetValidateCode, 20000, 1000,
+        mSendSmsTimerUtils = new SendSmsTimerUtils(mButtonGetValidateCode, 360000, 1000,
                 R.color.blue500, R.color.grey500);
 
         mSingletonUser.signUpInBackground(new SignUpCallback() {
@@ -108,10 +108,15 @@ public class GetValidateCodeListener implements View.OnClickListener {
                     Toast.makeText(mContext, mContext.getResources()
                             .getString(R.string.get_validate_code_success), Toast.LENGTH_SHORT)
                             .show();
-                    //处理验证码按钮等待20s
+                    //处理验证码按钮等待360s
                     mSendSmsTimerUtils.start();
                     //设置“注册”按钮为可用
                     mButtonSignin.setEnabled(true);
+                    //缓存用户的基本信息
+                    mSingletonUser.setId(mSingletonUser.getObjectId());
+                    mSingletonUser.setUserTel(mUserTel);
+                    mSingletonUser.setUserName(mUserName);
+                    mSingletonUser.setPassword(mUserPassword);
                 } else {
                     // 获取失败
                     Toast.makeText(mContext, mContext.getResources()

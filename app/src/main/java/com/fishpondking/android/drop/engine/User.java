@@ -11,17 +11,40 @@ import com.avos.avoscloud.AVUser;
 
 public class User extends AVUser {
 
-    public void setUserTel(String userTel){
-        setMobilePhoneNumber(userTel);
+    private String mId;
+    private String mUserTel;
+    private String mUserName;
+    private String mUserPassword;
+
+    public String getId() {
+        return mId;
     }
 
-    public void setUserPassword(String userPassword, String userPasswordCheck){
-        if(userPassword.equals(userPasswordCheck)){
-            setPassword(userPassword);
-        }
+    public void setId(String id) {
+        mId = id;
     }
 
-    public void setUserName(String userName){
-        setUsername(userName);
+    public String getUserTel() {
+        return mUserTel;
+    }
+
+    public void setUserTel(String userTel) {
+        mUserTel = userTel;
+    }
+
+    public String getUserName() {
+        return mUserName;
+    }
+
+    public void setUserName(String userName) {
+        mUserName = userName;
+    }
+
+    public String getUserPassword() {
+        return mUserPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        mUserPassword = userPassword;
     }
 }

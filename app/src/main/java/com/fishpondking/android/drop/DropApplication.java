@@ -3,6 +3,7 @@ package com.fishpondking.android.drop;
 import android.app.Application;
 
 import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.AVObject;
 
 //import com.avos.avoscloud.AVOSCloud;
 

@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVMobilePhoneVerifyCallback;
 import com.fishpondking.android.drop.R;
+import com.fishpondking.android.drop.activity.DormitorySelectActivity;
 import com.fishpondking.android.drop.engine.SingletonUser;
 import com.fishpondking.android.drop.utils.RegexUtils;
 
@@ -59,6 +60,7 @@ public class SigninListener implements View.OnClickListener{
                     // 验证成功
                     Toast.makeText(mContext, mContext.getResources()
                             .getString(R.string.signin_success), Toast.LENGTH_SHORT).show();
+                    DormitorySelectActivity.activityStart(mContext);
                 } else {
                     // 验证失败
                     Toast.makeText(mContext, mContext.getResources()
