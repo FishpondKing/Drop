@@ -46,6 +46,8 @@
     <string name="signin_fail">注册失败</string>
     <string name="join">加入</string>
     <string name="join_dormitory">加入寝室</string>
+    <string name="join_dormitory_success">成功加入寝室</string>
+    <string name="join_dormitory_fail">加入寝室失败</string>
     <string name="dormitory_id">寝室ID</string>
     <string name="create">创建</string>
     <string name="dormitory_name">寝室名</string>

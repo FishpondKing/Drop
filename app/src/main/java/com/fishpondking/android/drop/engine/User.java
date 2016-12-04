@@ -15,6 +15,8 @@ public class User extends AVUser {
     private String mUserTel;
     private String mUserName;
     private String mUserPassword;
+    private String mDormitoryId;
+    private boolean isLeader;
 
     public String getId() {
         return mId;
@@ -46,5 +48,21 @@ public class User extends AVUser {
 
     public void setUserPassword(String userPassword) {
         mUserPassword = userPassword;
+    }
+
+    public String getDormitoryId() {
+        return mDormitoryId;
+    }
+
+    public void setDormitoryId(String dormitoryId) {
+        mDormitoryId = dormitoryId;
+    }
+
+    public boolean isLeader() {
+        return isLeader;
+    }
+
+    public void setLeader(boolean leader) {
+        isLeader = leader;
     }
 }

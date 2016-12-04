@@ -1,5 +1,7 @@
 package com.fishpondking.android.drop.engine;
 
+import java.util.ArrayList;
+
 /**
  * Author: FishpondKing
  * Date: 2016/12/3:16:41
@@ -12,6 +14,7 @@ public class Dormitory {
     private String mId;
     private String mName;
     private String mLeader;
+    private ArrayList<String> mMembers;
 
     public String getId() {
         return mId;
@@ -35,5 +38,13 @@ public class Dormitory {
 
     public void setLeader(String leader) {
         mLeader = leader;
+    }
+
+    public ArrayList getMembers() {
+        return mMembers;
+    }
+
+    public void setMembers(ArrayList member) {
+        mMembers = member;
     }
 }

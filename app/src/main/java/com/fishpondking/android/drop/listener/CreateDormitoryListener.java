@@ -2,6 +2,7 @@ package com.fishpondking.android.drop.listener;
 
 import android.content.Context;
 import android.support.design.widget.TextInputEditText;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import com.fishpondking.android.drop.engine.SingletonDormitory;
 import com.fishpondking.android.drop.engine.SingletonUser;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
  * Author: FishpondKing
@@ -37,6 +39,7 @@ public class CreateDormitoryListener implements View.OnClickListener {
     private int mOldDormitoryId;
     private String mDormitoryId;
     private String mDormitoryName;
+    private ArrayList<String> mDormitoryMembers;
 
     public CreateDormitoryListener(Context context, Button button, TextInputEditText dormitoryName){
 
@@ -70,14 +73,18 @@ public class CreateDormitoryListener implements View.OnClickListener {
                     Toast.makeText(mContext, mContext.getResources()
                             .getString(R.string.create_dormitory_fail), Toast.LENGTH_SHORT)
                             .show();
+                    return;
                 }
             }
         });
+
+        mDormitoryMembers = null;
 
         AVObject dormitory = new AVObject("Dormitory");
         dormitory.put("dormitoryId", mDormitoryId);
         dormitory.put("dormitoryName",mDormitoryName);
         dormitory.put("dormitoryLeader",mSingletonUser.getId());
+        dormitory.put("dormitoryMembers",mDormitoryMembers);
         dormitory.saveInBackground(new SaveCallback() {
             @Override
             public void done(AVException e) {
@@ -89,6 +96,12 @@ public class CreateDormitoryListener implements View.OnClickListener {
                     mSingletonDormitory.setId(mDormitoryId);
                     mSingletonDormitory.setName(mDormitoryName);
                     mSingletonDormitory.setLeader(mSingletonUser.getId());
+                    mSingletonDormitory.setMembers(mDormitoryMembers);
+                    mSingletonUser.setLeader(true);
+                    mSingletonUser.put("isLeader",true);
+                    mSingletonUser.setDormitoryId(mDormitoryId);
+                    mSingletonUser.put("dormitoryId", mDormitoryId);
+                    mSingletonUser.saveInBackground();
                     HomeActivity.activityStart(mContext);
                 } else {
                     // 失败，请检查网络环境以及 SDK 配置是否正确

@@ -64,8 +64,13 @@ public class LoginListener implements View.OnClickListener{
             public void done(AVUser avUser, AVException e) {
                 if (e == null) {
                     // 登录成功
+                    mSingletonUser.setId(avUser.getObjectId());
+                    mSingletonUser.setUserTel(avUser.getMobilePhoneNumber());
+                    mSingletonUser.setUserName((String) avUser.get("userNickName"));
+
                     Toast.makeText(mContext, mContext.getResources()
                             .getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+                    DormitorySelectActivity.activityStart(mContext);
                 } else {
                     // 登录失败
                     Toast.makeText(mContext, mContext.getResources()
