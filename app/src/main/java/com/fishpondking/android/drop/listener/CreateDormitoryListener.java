@@ -40,6 +40,7 @@ public class CreateDormitoryListener implements View.OnClickListener {
     private String mDormitoryId;
     private String mDormitoryName;
     private ArrayList<String> mDormitoryMembers;
+    private Thread mThread;
 
     public CreateDormitoryListener(Context context, Button button, TextInputEditText dormitoryName){
 
@@ -49,6 +50,8 @@ public class CreateDormitoryListener implements View.OnClickListener {
 
         mSingletonUser = SingletonUser.getInstance();
         mSingletonDormitory = SingletonDormitory.getInstance();
+
+        mThread = Thread.currentThread();
     }
 
     @Override
@@ -66,7 +69,9 @@ public class CreateDormitoryListener implements View.OnClickListener {
                     mOldDormitoryId = avObject.getInt("dormitoryCount");
                     mOldDormitoryId++;
                     avObject.put("dormitoryCount",mOldDormitoryId);
+                    Log.v("线程中获取dormitoryId","成功");
                     avObject.saveInBackground();
+                    Log.v("线程中保存dormitoryId","成功");
                     mDormitoryId = df.format(mOldDormitoryId);
                 }else {
                     //创建失败，请检查网络环境是否正常
@@ -78,7 +83,24 @@ public class CreateDormitoryListener implements View.OnClickListener {
             }
         });
 
-        mDormitoryMembers = null;
+        //确保查询到mDormitoryId
+        try {
+            mThread.sleep(2000);
+            Log.v("主线程获取dormitoryId","成功");
+            Toast.makeText(mContext, mDormitoryId, Toast.LENGTH_SHORT)
+                    .show();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if(mDormitoryId == null){
+            Toast.makeText(mContext, "没有获取到mDormitoryId", Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
+
+        mDormitoryMembers = new ArrayList<String>();
+        mDormitoryMembers.add(mSingletonUser.getId());
 
         AVObject dormitory = new AVObject("Dormitory");
         dormitory.put("dormitoryId", mDormitoryId);
@@ -105,8 +127,7 @@ public class CreateDormitoryListener implements View.OnClickListener {
                     HomeActivity.activityStart(mContext);
                 } else {
                     // 失败，请检查网络环境以及 SDK 配置是否正确
-                    Toast.makeText(mContext, mContext.getResources()
-                            .getString(R.string.create_dormitory_fail), Toast.LENGTH_SHORT)
+                    Toast.makeText(mContext, R.string.create_dormitory_fail, Toast.LENGTH_SHORT)
                             .show();
                 }
             }
