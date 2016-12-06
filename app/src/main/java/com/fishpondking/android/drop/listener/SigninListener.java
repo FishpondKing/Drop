@@ -1,5 +1,6 @@
 package com.fishpondking.android.drop.listener;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
@@ -20,18 +21,18 @@ import com.fishpondking.android.drop.utils.RegexUtils;
  * Description:
  */
 
-public class SigninListener implements View.OnClickListener{
+public class SigninListener implements View.OnClickListener {
 
-    private Context mContext;
+    private Activity mActivity;
     private TextInputEditText mTiEditTextValidateCode;
     private Button mButton;
 
     private SingletonUser mSingletonUser;
     private String mValidateCode;
 
-    public SigninListener(Context context, Button button, TextInputEditText validateCode){
+    public SigninListener(Activity activity, Button button, TextInputEditText validateCode) {
 
-        mContext = context;
+        mActivity = activity;
         mTiEditTextValidateCode = validateCode;
         mButton = button;
 
@@ -47,27 +48,29 @@ public class SigninListener implements View.OnClickListener{
 
         //检查验证码格式
         if (RegexUtils.isValidatecode(mValidateCode) == false) {
-            Toast.makeText(mContext, mContext.getResources()
+            Toast.makeText(mActivity, mActivity.getResources()
                     .getString(R.string.user_validate_wrong), Toast.LENGTH_SHORT).show();
             return;
         }
 
         mSingletonUser.verifyMobilePhoneInBackground(mValidateCode,
                 new AVMobilePhoneVerifyCallback() {
-            @Override
-            public void done(AVException e) {
-                if(e == null){
-                    // 验证成功
-                    Toast.makeText(mContext, mContext.getResources()
-                            .getString(R.string.signin_success), Toast.LENGTH_SHORT).show();
-                    DormitorySelectActivity.activityStart(mContext);
-                } else {
-                    // 验证失败
-                    Toast.makeText(mContext, mContext.getResources()
-                            .getString(R.string.signin_fail), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                    @Override
+                    public void done(AVException e) {
+                        if (e == null) {
+                            // 验证成功
+                            Toast.makeText(mActivity, mActivity.getResources()
+                                    .getString(R.string.signin_success), Toast.LENGTH_SHORT).show();
+                            DormitorySelectActivity.activityStart(mActivity);
+                            mActivity.finish();
+                            return;
+                        } else {
+                            // 验证失败
+                            Toast.makeText(mActivity, mActivity.getResources()
+                                    .getString(R.string.signin_fail), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
 }

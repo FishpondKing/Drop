@@ -1,5 +1,6 @@
 package com.fishpondking.android.drop.listener;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.fishpondking.android.drop.R;
 import com.fishpondking.android.drop.activity.HomeActivity;
 import com.fishpondking.android.drop.engine.SingletonDormitory;
 import com.fishpondking.android.drop.engine.SingletonUser;
+import com.fishpondking.android.drop.utils.SpUtils;
 
 import java.util.ArrayList;
 
@@ -26,19 +28,18 @@ import java.util.ArrayList;
 
 public class JoinDormitoryListener implements View.OnClickListener {
 
-    private Context mContext;
+    private Activity mActivity;
     private TextInputEditText mTextInputEditText;
     private Button mButton;
 
     private SingletonUser mSingletonUser;
     private SingletonDormitory mSingletonDormitory;
     private String mDormitoryId;
-    private String mDormitoryName;
     private ArrayList<String> mDormitoryMembers;
 
-    public JoinDormitoryListener(Context context, Button button, TextInputEditText dormitoryId){
+    public JoinDormitoryListener(Activity activity, Button button, TextInputEditText dormitoryId) {
 
-        mContext = context;
+        mActivity = activity;
         mTextInputEditText = dormitoryId;
         mButton = button;
 
@@ -57,24 +58,35 @@ public class JoinDormitoryListener implements View.OnClickListener {
         query.getFirstInBackground(new GetCallback<AVObject>() {
             @Override
             public void done(AVObject avObject, AVException e) {
-                if(e == null){
+                if (e == null) {
                     //查询寝室成功
-                    Toast.makeText(mContext, mContext.getResources()
+                    Toast.makeText(mActivity, mActivity.getResources()
                             .getString(R.string.join_dormitory_success), Toast.LENGTH_SHORT)
                             .show();
+                    //存储SingletonDormitory信息
+                    mSingletonDormitory.setId(mDormitoryId);
+                    mSingletonDormitory.setName(avObject.getString("dormitoryName"));
+                    mSingletonDormitory.setLeader(avObject.getString("dormitoryLeader"));
                     mDormitoryMembers = (ArrayList) avObject.getList("dormitoryMembers");
                     mDormitoryMembers.add(mSingletonUser.getId());
+                    mSingletonDormitory.setMembers(mDormitoryMembers);
                     avObject.put("dormitoryMembers", mDormitoryMembers);
                     avObject.saveInBackground();
+                    //存储SingletonUser信息
                     mSingletonUser.setLeader(false);
-                    mSingletonUser.put("isLeader",false);
+                    mSingletonUser.put("isLeader", false);
                     mSingletonUser.setDormitoryId(avObject.getString("dormitoryId"));
                     mSingletonUser.put("dormitoryId", avObject.getString("dormitoryId"));
                     mSingletonUser.saveInBackground();
-                    HomeActivity.activityStart(mContext);
-                }else {
+                    //保存登录状态
+                    SpUtils.saveUserState(mActivity, mSingletonUser);
+                    //页面跳转
+                    HomeActivity.activityStart(mActivity);
+                    mActivity.finish();
+                    return;
+                } else {
                     //查询寝室失败
-                    Toast.makeText(mContext, mContext.getResources()
+                    Toast.makeText(mActivity, mActivity.getResources()
                             .getString(R.string.join_dormitory_fail), Toast.LENGTH_SHORT)
                             .show();
                 }

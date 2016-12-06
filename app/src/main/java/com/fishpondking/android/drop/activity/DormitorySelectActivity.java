@@ -27,7 +27,7 @@ public class DormitorySelectActivity extends BaseActivity {
     private Button mButtonCreateDormitory;
 
 
-    public static void activityStart(Context context){
+    public static void activityStart(Context context) {
         Intent intent = new Intent(context, DormitorySelectActivity.class);
         context.startActivity(intent);
     }
