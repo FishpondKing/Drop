@@ -11,8 +11,7 @@
         android:id="@+id/appbar_layout_diary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_diary"
@@ -21,7 +20,9 @@
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways">
+            app:layout_scrollFlags="scroll|snap|enterAlways"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -39,5 +40,31 @@
         </android.support.v7.widget.RecyclerView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/floating_action_menu_diary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="16dp"
+        app:menu_colorNormal="@color/yellow500"
+        app:menu_colorPressed="@color/yellow500"
+        app:menu_labels_textColor="@color/black"
+        app:menu_labels_colorNormal="@color/grey200"
+        app:menu_labels_colorPressed="@color/grey200"
+        app:layout_anchor="@id/recycler_view_diary"
+        app:layout_anchorGravity="bottom|right|end">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floating_action_button_write_diary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fab_write_diary"
+            app:fabSize="mini"
+            app:fab_label="@string/write_diary"
+            app:fab_colorNormal="@color/grey200"
+            app:fab_colorPressed="@color/grey200"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>

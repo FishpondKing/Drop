@@ -58,5 +58,6 @@
     <string name="night_model">夜间模式</string>
     <string name="setting">设置</string>
     <string name="report">意见反馈</string>
+    <string name="write_diary">写日志</string>
 
 </resources>
