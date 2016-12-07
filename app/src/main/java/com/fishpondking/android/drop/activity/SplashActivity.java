@@ -7,7 +7,10 @@ import android.preference.PreferenceManager;
 
 import com.avos.avoscloud.AVAnalytics;
 import com.fishpondking.android.drop.R;
+import com.fishpondking.android.drop.engine.SingletonDormitory;
+import com.fishpondking.android.drop.engine.SingletonUser;
 import com.fishpondking.android.drop.utils.BaseActivity;
+import com.fishpondking.android.drop.utils.SpUtils;
 
 /**
  * Author: FishpondKing
@@ -19,16 +22,17 @@ import com.fishpondking.android.drop.utils.BaseActivity;
 public class SplashActivity extends BaseActivity {
 
     private static final String TAG = SplashActivity.class.getSimpleName();
-    //是否是第一次启动
-    private static final String IS_FIRST_USE = "isFirstUse";
+
     //到达主页的延时
     private static final int TIME_TO_HOME = 2000;
 
-    private boolean isFirstUse;
+    private boolean isSaveUserId;
+    private SingletonUser mSingletonUser;
+    private SingletonDormitory mSingletonDormitory;
 
     @Override
     protected void initVariables() {
-        isFirstUse = isFirstUse(this);
+        isSaveUserId = isSaveUserId(this);
     }
 
     @Override
@@ -37,19 +41,15 @@ public class SplashActivity extends BaseActivity {
         //统计应用打开情况
         AVAnalytics.trackAppOpened(getIntent());
 
-        //如果是第一次启动先进入功能引导页，并将IS_FIRST_USE设为false
-        if (isFirstUse) {
-            PreferenceManager.getDefaultSharedPreferences(this)
-                    .edit()
-                    .putBoolean(IS_FIRST_USE, false)
-                    .apply();
-            WelcomeGuideActivity.activityStart(this);
-            finish();
-            return;
-        } else {
-            //如果不是第一次启动，则正常显示启动屏
+        //如果没有用户信息先进入功能引导页
+        if (isSaveUserId) {
+            //如果存储了用户信息，则显示启动屏
             setContentView(R.layout.activity_splash);
-
+            //加载用户信息，宿舍信息
+            mSingletonUser = SingletonUser.getInstance();
+            mSingletonDormitory = SingletonDormitory.getInstance();
+            SpUtils.loadUserState(this, mSingletonUser);
+            SpUtils.loadDormitoryState(this, mSingletonDormitory);
             new Handler().postDelayed(new Runnable() {
 
                 @Override
@@ -57,6 +57,12 @@ public class SplashActivity extends BaseActivity {
                     enterHomeActivity();
                 }
             }, TIME_TO_HOME);
+
+        } else {
+            //如果没有存储用户信息，则进入引导页
+            WelcomeGuideActivity.activityStart(this);
+            finish();
+            return;
         }
 
     }
@@ -68,16 +74,19 @@ public class SplashActivity extends BaseActivity {
 
     /**
      * Method: isFirstUse(Context context)
-     * Description: 判断应用是否为第一次启动
+     * Description: 通过存储userId判断应用是否存储了用户信息
      * Param: context 传入当前的Activity
-     * Return: 是否为第一次启动
+     * Return: 是否存储用户信息
      * Author: FishpondKing
      * Date: 2016/11/9:10:09
      */
 
-    private boolean isFirstUse(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean(IS_FIRST_USE, true);
+    private boolean isSaveUserId(Context context) {
+        String userId;
+        userId = PreferenceManager.getDefaultSharedPreferences(context).getString("userId", "");
+        if (userId == null || userId == "") {
+            return false;
+        } else return true;
     }
 
     private void enterHomeActivity() {

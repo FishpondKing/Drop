@@ -134,7 +134,7 @@ public class WelcomeGuideActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button_welcome_guide_login:
                 LoginAndSigninActivity.activityStart(this, 0);
                 finish();
