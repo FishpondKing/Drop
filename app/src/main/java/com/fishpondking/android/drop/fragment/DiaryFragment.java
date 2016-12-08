@@ -64,7 +64,6 @@ public class DiaryFragment extends Fragment {
         mSwipeRefreshLayout = (SwipeRefreshLayout) mView.findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setProgressViewOffset(true, 50, 200);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.blue500);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.grey200);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
