@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 
+import com.fishpondking.android.drop.activity.HomeActivity;
+import com.github.clans.fab.FloatingActionMenu;
+
 /**
  * Author: FishpondKing
  * Date: 2016/12/7:18:44
@@ -19,8 +22,8 @@ import android.view.animation.Interpolator;
  * Description:
  */
 
-public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
-    private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
+public class ScrollAwareFABBehavior extends CoordinatorLayout.Behavior<FloatingActionMenu> {
+    private static final android.view.animation.Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
     private boolean mIsAnimatingOut = false;
 
     public ScrollAwareFABBehavior(Context context, AttributeSet attrs) {
@@ -28,68 +31,60 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
     }
 
     @Override
-    public boolean onStartNestedScroll(final CoordinatorLayout coordinatorLayout, final FloatingActionButton child,
-                                       final View directTargetChild, final View target, final int nestedScrollAxes) {
-        // Ensure we react to vertical scrolling
-        return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL
-                || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
+    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionMenu child, View directTargetChild, View target, int nestedScrollAxes) {
+        //处理垂直方向上的滚动事件
+        return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
     }
 
     @Override
-    public void onNestedScroll(final CoordinatorLayout coordinatorLayout, final FloatingActionButton child,
-                               final View target, final int dxConsumed, final int dyConsumed,
-                               final int dxUnconsumed, final int dyUnconsumed) {
+    public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionMenu child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
+        //向上滚动进入，向下滚动隐藏
         if (dyConsumed > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {
-            // User scrolled down and the FAB is currently visible -> hide the FAB
+            //如果是展开的话就先收回去
+            if (child.isOpened()) {
+                child.close(true);
+            }
+            //animateOut()和animateIn()都是私有方法，需要重新实现
             animateOut(child);
+
+            //隐藏Home页的BottomNavigationBar
+            //HomeActivity.mBottomNavigationBar.hide(true);
         } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
-            // User scrolled up and the FAB is currently not visible -> show the FAB
             animateIn(child);
+
+            //显示Home页的BottomNavigationBar
+            //HomeActivity.mBottomNavigationBar.show(true);
         }
     }
 
-    // Same animation that FloatingActionButton.Behavior uses to hide the FAB when the AppBarLayout exits
-    private void animateOut(final FloatingActionButton button) {
-        if (Build.VERSION.SDK_INT >= 14) {
-            ViewCompat.animate(button).translationY(button.getHeight() + getMarginBottom(button)).setInterpolator(INTERPOLATOR).withLayer()
-                    .setListener(new ViewPropertyAnimatorListener() {
-                        public void onAnimationStart(View view) {
-                            ScrollAwareFABBehavior.this.mIsAnimatingOut = true;
-                        }
+    private void animateOut(final FloatingActionMenu button) {
+        ViewCompat.animate(button).translationY(500)
+                .setInterpolator(INTERPOLATOR).withLayer()
+                .setListener(new ViewPropertyAnimatorListener() {
+                    @Override
+                    public void onAnimationStart(View view) {
+                        ScrollAwareFABBehavior.this.mIsAnimatingOut = true;
+                    }
 
-                        public void onAnimationCancel(View view) {
-                            ScrollAwareFABBehavior.this.mIsAnimatingOut = false;
-                        }
+                    @Override
+                    public void onAnimationEnd(View view) {
+                        ScrollAwareFABBehavior.this.mIsAnimatingOut = false;
+                        view.setVisibility(View.GONE);
+                    }
 
-                        public void onAnimationEnd(View view) {
-                            ScrollAwareFABBehavior.this.mIsAnimatingOut = false;
-                            view.setVisibility(View.GONE);
-                        }
-                    }).start();
-        } else {
+                    @Override
+                    public void onAnimationCancel(View view) {
+                        ScrollAwareFABBehavior.this.mIsAnimatingOut = false;
 
-        }
+                    }
+                }).start();
     }
 
-    // Same animation that FloatingActionButton.Behavior uses to show the FAB when the AppBarLayout enters
-    private void animateIn(FloatingActionButton button) {
+    private void animateIn(FloatingActionMenu button) {
         button.setVisibility(View.VISIBLE);
-        if (Build.VERSION.SDK_INT >= 14) {
-            ViewCompat.animate(button).translationY(0)
-                    .setInterpolator(INTERPOLATOR).withLayer().setListener(null)
-                    .start();
-        } else {
-
-        }
-    }
-
-    private int getMarginBottom(View v) {
-        int marginBottom = 0;
-        final ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
-        if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
-            marginBottom = ((ViewGroup.MarginLayoutParams) layoutParams).bottomMargin;
-        }
-        return marginBottom;
+        ViewCompat.animate(button).translationY(0)
+                .setInterpolator(INTERPOLATOR).withLayer().setListener(null)
+                .start();
     }
 }

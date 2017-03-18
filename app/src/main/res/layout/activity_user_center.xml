@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout_user_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_user_center"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp"
+            android:background="?attr/colorPrimary"
+            android:title="@string/user_center"
+            app:layout_scrollFlags="scroll|snap|enterAlways"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--头像信息,账号，用户名-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/blue500"
+                android:padding="10dp">
+
+                <!--头像信息-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circle_image_view_user_info_head"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_user_head"
+                        app:civ_fill_color="@color/gallery_white"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/grey300"/>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/button_user_info_change_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/change_head"/>
+
+                </LinearLayout>
+                <!--头像信息END-->
+
+                <!--用户名账号-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
+
+                    <!--用户账号-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/text_view_user_info_userId_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/grey200"
+                            android:text="@string/userId_"
+                            />
+
+                        <TextView
+                            android:id="@+id/text_view_user_info_userId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/grey200"
+                            android:text="00000000000"/>
+
+                    </LinearLayout>
+                    <!--用户账号END-->
+
+                    <!--用户名-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/text_view_user_info_username_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:paddingLeft="10dp"
+                                android:text="@string/username_"
+                                android:textColor="@color/grey200"/>
+
+                            <TextView
+                                android:id="@+id/text_view_user_info_username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:textColor="@color/grey200"
+                                android:text="点滴用户"/>
+
+                        </LinearLayout>
+
+
+                        <ImageButton
+                            android:id="@+id/image_button_user_info_change_username"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:padding="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_more_options_edit_user_info"/>
+
+                    </RelativeLayout>
+                    <!--用户名END-->
+
+                </LinearLayout>
+
+                <!--用户名账号END-->
+
+            </LinearLayout>
+            <!--头像信息，账号，用户名END-->
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="8dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="30dp">
+
+                <!--寝室生活信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--加入寝室时间-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="20dp"
+                        android:paddingLeft="20dp"
+                        android:paddingBottom="20dp">
+
+                        <TextView
+                            android:id="@+id/text_view_user_info_join_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="30sp"
+                            android:textColor="@color/blue700"
+                            android:text="从网络获取失败"/>
+
+                        <TextView
+                            android:id="@+id/text_view_user_info_join_time_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue700"
+                            android:text="@string/join_time_"/>
+
+                    </LinearLayout>
+                    <!--加入寝室时间END-->
+
+                    <!--已写的日志和已上传的照片-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp">
+
+                        <!--已写的日志-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/text_view_user_info_diary_count"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/blue700"
+                                android:textSize="30sp"
+                                android:text="0"/>
+
+                            <TextView
+                                android:id="@+id/text_view_user_info_diary_count_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/blue700"
+                                android:text="@string/write_diary_count_"/>
+
+                        </LinearLayout>
+                        <!--已写的日志END-->
+
+                        <!--已上传的照片-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingLeft="20dp">
+
+                            <TextView
+                                android:id="@+id/text_view_user_info_photo_count"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/blue700"
+                                android:textSize="30sp"
+                                android:text="0"/>
+
+                            <TextView
+                                android:id="@+id/text_view_user_info_photo_count_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/blue700"
+                                android:text="@string/submit_photo_count_"/>
+
+                        </LinearLayout>
+                        <!--已上传的照片END-->
+                    </LinearLayout>
+                    <!--已写的日志和已上传的照片END-->
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

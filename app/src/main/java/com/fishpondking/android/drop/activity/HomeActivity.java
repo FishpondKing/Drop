@@ -5,17 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.fishpondking.android.drop.R;
-import com.fishpondking.android.drop.fragment.CleaningFragment;
-import com.fishpondking.android.drop.fragment.CultureFragment;
+import com.fishpondking.android.drop.engine.SingletonDormitory;
 import com.fishpondking.android.drop.fragment.DiaryFragment;
 import com.fishpondking.android.drop.fragment.LifeFragment;
 import com.fishpondking.android.drop.fragment.MessageFragment;
-import com.fishpondking.android.drop.fragment.MoneyFragment;
 import com.fishpondking.android.drop.fragment.MoreOptionsFragment;
+import com.fishpondking.android.drop.fragment.PhotoWallFragment;
 import com.fishpondking.android.drop.utils.BaseActivity;
 
 import java.util.ArrayList;
@@ -35,12 +35,16 @@ public class HomeActivity extends BaseActivity
 
     private FragmentManager mFragmentManager;
     private Fragment mFragment;
-    private BottomNavigationBar mBottomNavigationBar;
     private DiaryFragment mDiaryFragment;
-    private CultureFragment mCultureFragment;
+    //private CultureFragment mCultureFragment;
+    private PhotoWallFragment mPhotoWallFragment;
     private LifeFragment mLifeFragment;
     private MessageFragment mMessageFragment;
     private MoreOptionsFragment mMoreOptionsFragment;
+    private BottomNavigationBar mBottomNavigationBar;
+
+    //public用于Behavior动画的滑动隐藏，暂时没有好的办法，先这样处理
+    //public static BottomNavigationBar mBottomNavigationBar;
 
     private List<Fragment> mMainActivityFragments;
 
@@ -53,7 +57,8 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void initVariables() {
         mDiaryFragment = DiaryFragment.newInstance();
-        mCultureFragment = CultureFragment.newInstance();
+        //mCultureFragment = CultureFragment.newInstance();
+        mPhotoWallFragment = PhotoWallFragment.newInstance();
         mLifeFragment = LifeFragment.newInstance();
         mMessageFragment = MessageFragment.newInstance();
         mMoreOptionsFragment = MoreOptionsFragment.newInstance();
@@ -64,17 +69,21 @@ public class HomeActivity extends BaseActivity
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.activity_home);
 
+        //测试
+        SingletonDormitory singletonDormitory = SingletonDormitory.getInstance();
+        Log.d("HomeActivity测试", singletonDormitory.getId());
+
         mFragmentManager = getSupportFragmentManager();
         mFragment = mFragmentManager.findFragmentById(R.id.activity_main_fragment_container);
 
         if (mFragment == null) {
             mFragmentManager.beginTransaction()
                     .add(R.id.activity_main_fragment_container, mDiaryFragment)
-                    .add(R.id.activity_main_fragment_container, mCultureFragment)
+                    .add(R.id.activity_main_fragment_container, mPhotoWallFragment)
                     .add(R.id.activity_main_fragment_container, mLifeFragment)
                     .add(R.id.activity_main_fragment_container, mMessageFragment)
                     .add(R.id.activity_main_fragment_container, mMoreOptionsFragment)
-                    .hide(mCultureFragment)
+                    .hide(mPhotoWallFragment)
                     .hide(mLifeFragment)
                     .hide(mMessageFragment)
                     .hide(mMoreOptionsFragment)
@@ -86,8 +95,8 @@ public class HomeActivity extends BaseActivity
         mBottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_diary,
                         R.string.bottom_bar_diary))
-                .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_culture,
-                        R.string.bottom_bar_culture))
+                .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_photo_wall,
+                        R.string.bottom_bar_photo_wall))
                 .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_life,
                         R.string.bottom_bar_life))
                 .addItem(new BottomNavigationItem(R.drawable.ic_bottom_bar_message_board,
@@ -108,7 +117,7 @@ public class HomeActivity extends BaseActivity
     private List<Fragment> getMainActivityFragments() {
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(mDiaryFragment);
-        fragments.add(mCultureFragment);
+        fragments.add(mPhotoWallFragment);
         fragments.add(mLifeFragment);
         fragments.add(mMessageFragment);
         fragments.add(mMoreOptionsFragment);

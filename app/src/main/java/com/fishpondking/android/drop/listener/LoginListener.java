@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TextInputEditText;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -78,7 +79,7 @@ public class LoginListener implements View.OnClickListener {
                     public void done(AVUser avUser, AVException e) {
                         if (e == null) {
                             // 登录成功
-                            mSingletonUser.setId(avUser.getObjectId());
+                            mSingletonUser.setId(avUser.getMobilePhoneNumber());
                             mSingletonUser.setUserTel(avUser.getMobilePhoneNumber());
                             mSingletonUser.setUserName((String) avUser.get("userNickName"));
 
@@ -101,32 +102,49 @@ public class LoginListener implements View.OnClickListener {
                                 mSingletonUser.setLeader(mUserIsLeader);
                                 mSingletonUser.setDormitoryId(mUserDormitoryId);
 
-                                AVQuery<AVObject> query = new AVQuery<>("Dormitory");
-                                query.whereEqualTo("dormitoryId", mUserDormitoryId);
-                                query.getFirstInBackground(new GetCallback<AVObject>() {
+                                //获取用户头像Url
+                                String userHeadName = "userHead" + mSingletonUser.getId() + ".jpg";
+                                AVQuery<AVObject> userPhotoHead = new AVQuery<AVObject>("_File");
+                                userPhotoHead.whereEqualTo("name", userHeadName);
+                                userPhotoHead.getFirstInBackground(new GetCallback<AVObject>() {
                                     @Override
                                     public void done(AVObject avObject, AVException e) {
-                                        //存储SingletonDormitory信息
-                                        mSingletonDormitory
-                                                .setId(avObject.getString("dormitoryId"));
-                                        mSingletonDormitory
-                                                .setName(avObject.getString("dormitoryName"));
-                                        mSingletonDormitory
-                                                .setLeader(avObject.getString("dormitoryLeader"));
-                                        mSingletonDormitory
-                                                .setMembers((ArrayList)avObject
-                                                        .getList("dormitoryMembers"));
+                                        //设置用户头像Url
+                                        if(avObject != null){
+                                            mSingletonUser.setUserHeadPhotoUrl(avObject.getString("url"));
+                                        }
+
+                                        //保存用户登录状态信息
+                                        SpUtils.saveUserState(mActivity,mSingletonUser);
+
+                                        AVQuery<AVObject> query = new AVQuery<>("Dormitory");
+                                        query.whereEqualTo("dormitoryId", mUserDormitoryId);
+                                        query.getFirstInBackground(new GetCallback<AVObject>() {
+                                            @Override
+                                            public void done(AVObject avObject, AVException e) {
+                                                //存储SingletonDormitory信息
+                                                mSingletonDormitory
+                                                        .setId(mUserDormitoryId);
+                                                mSingletonDormitory
+                                                        .setName(avObject.getString("dormitoryName"));
+                                                mSingletonDormitory
+                                                        .setLeader(avObject.getString("dormitoryLeader"));
+                                                mSingletonDormitory
+                                                        .setMembers((ArrayList)avObject
+                                                                .getList("dormitoryMembers"));
+                                                //保存寝室状态信息
+                                                SpUtils.saveDormitoryState(mActivity, mSingletonDormitory);
+
+                                                HomeActivity.activityStart(mActivity);
+                                                mActivity.finish();
+                                                return;
+                                            }
+                                        });
+
+
                                     }
                                 });
-                                //保存用户登录状态信息
-                                SpUtils.saveUserState(mActivity,mSingletonUser);
-                                SpUtils.saveDormitoryState(mActivity, mSingletonDormitory);
-
-                                HomeActivity.activityStart(mActivity);
-                                mActivity.finish();
-                                return;
                             }
-
 
                         } else {
                             // 登录失败

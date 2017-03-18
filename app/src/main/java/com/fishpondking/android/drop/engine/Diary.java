@@ -13,13 +13,26 @@ public class Diary {
 
     private String mId;
     private String mTitle;
+    private String mAuthorId;
     private String mAuthor;
+    private String mDormitoryId;
     private String mContent;
     private Date mDate;
-    private String mPhoto;
+    private String mTopPhotoUrl;
 
     public Diary() {
 
+    }
+
+    public void clear(){
+        mId = null;
+        mTitle = null;
+        mAuthor = null;
+        mAuthorId = null;
+        mDormitoryId = null;
+        mContent = null;
+        mDate = null;
+        mTopPhotoUrl = null;
     }
 
     public String getId() {
@@ -62,11 +75,27 @@ public class Diary {
         mDate = date;
     }
 
-    public String getPhoto() {
-        return mPhoto;
+    public String getTopPhotoUrl() {
+        return mTopPhotoUrl;
     }
 
-    public void setPhoto(String photo) {
-        mPhoto = photo;
+    public void setTopPhotoUrl(String topPhotoUrl) {
+        mTopPhotoUrl = topPhotoUrl;
+    }
+
+    public String getAuthorId() {
+        return mAuthorId;
+    }
+
+    public void setAuthorId(String authorId) {
+        mAuthorId = authorId;
+    }
+
+    public String getDormitoryId() {
+        return mDormitoryId;
+    }
+
+    public void setDormitoryId(String dormitoryId) {
+        mDormitoryId = dormitoryId;
     }
 }

@@ -123,6 +123,17 @@ public class RegexUtils {
     }
 
     /**
+     * 验证字符串不包含空字符
+     *
+     *
+     * @param input 待验证文本
+     * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     */
+    public static boolean isStringNotContainSpace(CharSequence input) {
+        return isMatch(REGEX_STRINGNOTSPACE, input);
+    }
+
+    /**
      * 验证用户验证码
      * <p>取值范围0-9，验证码必须是6位数字</p>
      *

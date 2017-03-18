@@ -44,7 +44,6 @@ public class CreateDormitoryListener implements View.OnClickListener {
     private String mDormitoryId;
     private String mDormitoryName;
     private ArrayList<String> mDormitoryMembers;
-    private Thread mThread;
 
     public CreateDormitoryListener(Activity activity, Button button,
                                    TextInputEditText dormitoryName) {
@@ -56,7 +55,6 @@ public class CreateDormitoryListener implements View.OnClickListener {
         mSingletonUser = SingletonUser.getInstance();
         mSingletonDormitory = SingletonDormitory.getInstance();
 
-        mThread = Thread.currentThread();
     }
 
     @Override

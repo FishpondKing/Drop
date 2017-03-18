@@ -27,11 +27,29 @@
         </activity>
 
         <activity android:name=".activity.WelcomeGuideActivity"/>
-        <activity android:name=".activity.HomeActivity"/>
+        <activity
+            android:name=".activity.HomeActivity"
+            android:launchMode="singleTask">
+
+        </activity>
         <activity android:name=".activity.LoginAndSigninActivity"/>
         <activity android:name=".activity.QQLogin"/>
         <activity android:name=".activity.WeiboLogin"/>
         <activity android:name=".activity.DormitorySelectActivity"/>
+        <activity android:name=".activity.WriteDiaryActivity"
+                  android:label="@string/write_diary"
+                  android:parentActivityName=".activity.HomeActivity"/>
+        <activity android:name=".activity.DiaryContentActivity"
+            android:parentActivityName=".activity.HomeActivity"/>
+        <activity android:name=".activity.PhotoPagerActivity"/>
+
+        <activity android:name=".activity.UserCenterActivity"
+                  android:label="@string/user_center"
+                  android:parentActivityName=".activity.HomeActivity"/>
+        
+        <activity android:name=".activity.PostDormitoryActivityActivity"
+                  android:label="@string/post_activity"
+                  android:parentActivityName=".activity.HomeActivity"/>
 
 
          <!--实时通信模块、推送（均需要加入以下声明） START -->
@@ -72,11 +90,13 @@
             android:windowSoftInputMode="adjustResize" >
         </activity>
 
+        <!--用户反馈模块-->
+        <activity
+            android:name="com.avos.avoscloud.feedback.ThreadActivity" >
+        </activity>
+
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
 </manifest>

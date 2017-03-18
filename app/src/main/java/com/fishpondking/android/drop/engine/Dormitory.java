@@ -16,6 +16,20 @@ public class Dormitory {
     private String mLeader;
     private ArrayList<String> mMembers;
 
+    public Dormitory(){
+        mId = null;
+        mName = null;
+        mLeader = null;
+        mMembers = null;
+    }
+
+    public void clear(){
+        mId = null;
+        mName = null;
+        mLeader = null;
+        mMembers = null;
+    }
+
     public String getId() {
         return mId;
     }

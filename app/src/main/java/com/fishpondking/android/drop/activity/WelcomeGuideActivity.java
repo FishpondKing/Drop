@@ -137,11 +137,11 @@ public class WelcomeGuideActivity extends BaseActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.button_welcome_guide_login:
                 LoginAndSigninActivity.activityStart(this, 0);
-                finish();
+                WelcomeGuideActivity.this.finish();
                 return;
             case R.id.button_welcome_guide_signin:
                 LoginAndSigninActivity.activityStart(this, 1);
-                finish();
+                WelcomeGuideActivity.this.finish();
                 return;
             default:
         }

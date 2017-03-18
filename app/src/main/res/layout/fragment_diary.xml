@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator_layout_diary"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar_layout_diary"
@@ -15,7 +14,6 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_diary"
-            android:title="寝室名"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
@@ -28,7 +26,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+        android:id="@+id/swipe_refresh_layout_diary"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -53,6 +51,7 @@
         app:menu_labels_colorNormal="@color/grey200"
         app:menu_labels_colorPressed="@color/grey200"
         app:layout_anchor="@id/recycler_view_diary"
+        app:layout_behavior="com.fishpondking.android.drop.behavior.ScrollAwareFABBehavior"
         app:layout_anchorGravity="bottom|right|end">
 
         <com.github.clans.fab.FloatingActionButton

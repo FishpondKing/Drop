@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_layout_dormitory_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout_dormitory_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_dormitory_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/floating_action_menu_dormitory_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="16dp"
+        app:menu_colorNormal="@color/yellow500"
+        app:menu_colorPressed="@color/yellow500"
+        app:menu_labels_textColor="@color/black"
+        app:menu_labels_colorNormal="@color/grey200"
+        app:menu_labels_colorPressed="@color/grey200"
+        app:layout_anchor="@+id/recycler_view_dormitory_activity"
+        app:layout_behavior="com.fishpondking.android.drop.behavior.ScrollAwareFABBehavior"
+        app:layout_anchorGravity="bottom|right|end">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floating_action_button_post_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_post_activity"
+            app:fabSize="mini"
+            app:fab_label="@string/post_activity"
+            app:fab_colorNormal="@color/grey200"
+            app:fab_colorPressed="@color/grey200"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</android.support.design.widget.CoordinatorLayout>

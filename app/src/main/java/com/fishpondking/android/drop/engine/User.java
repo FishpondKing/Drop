@@ -17,6 +17,27 @@ public class User extends AVUser {
     private String mUserPassword;
     private String mDormitoryId;
     private boolean isLeader;
+    private String mUserHeadPhotoUrl;
+
+    public User(){
+        mId = null;
+        mUserTel = null;
+        mUserName = null;
+        mUserPassword = null;
+        mDormitoryId = null;
+        isLeader = false;
+        mUserHeadPhotoUrl = null;
+    }
+
+    public void clear(){
+        mId = null;
+        mUserTel = null;
+        mUserName = null;
+        mUserPassword = null;
+        mDormitoryId = null;
+        isLeader = false;
+        mUserHeadPhotoUrl = null;
+    }
 
     public String getId() {
         return mId;
@@ -64,5 +85,13 @@ public class User extends AVUser {
 
     public void setLeader(boolean leader) {
         isLeader = leader;
+    }
+
+    public String getUserHeadPhotoUrl() {
+        return mUserHeadPhotoUrl;
+    }
+
+    public void setUserHeadPhotoUrl(String userHeaderUrl) {
+        mUserHeadPhotoUrl = userHeaderUrl;
     }
 }

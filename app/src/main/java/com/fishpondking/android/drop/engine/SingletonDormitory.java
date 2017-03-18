@@ -1,7 +1,5 @@
 package com.fishpondking.android.drop.engine;
 
-import com.avos.avoscloud.AVObject;
-
 /**
  * Author: FishpondKing
  * Date: 2016/12/3:10:40
@@ -11,7 +9,7 @@ import com.avos.avoscloud.AVObject;
 
 public class SingletonDormitory extends Dormitory{
 
-    private static SingletonDormitory sSingletonDormitory;
+    private static SingletonDormitory sSingletonDormitory = null;
 
     private SingletonDormitory(){}
 

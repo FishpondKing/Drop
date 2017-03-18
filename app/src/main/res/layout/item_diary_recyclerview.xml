@@ -19,8 +19,8 @@
         <ImageView
             android:id="@+id/image_view_diary_photo"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_diary_photo"
+            android:layout_height="200dp"
+            android:background="@color/grey200"
             android:scaleType="centerCrop"/>
 
         <TextView
@@ -31,8 +31,7 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:textColor="@color/black"
-            android:gravity="center_vertical"
-            android:text="这里是标题"/>
+            android:gravity="center_vertical"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -43,16 +42,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="5dp"
-                android:text="11.11"/>
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:id="@+id/text_view_diary_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_margin="5dp"
-                android:text="作者"/>
+                android:layout_margin="5dp"/>
 
         </RelativeLayout>
 

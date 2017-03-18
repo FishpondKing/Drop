@@ -9,7 +9,7 @@ package com.fishpondking.android.drop.engine;
 
 public class SingletonUser extends User{
 
-    private static SingletonUser sSingletonUser;
+    private static SingletonUser sSingletonUser = null;
 
     private SingletonUser(){}
 

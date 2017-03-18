@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_dormitory_activity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green500">
+
+        <TextView
+            android:id="@+id/text_view_dormitory_activity_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="2017-03-15 16:28:19"
+            android:textColor="@color/grey300"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_view_dormitory_activity_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:text="未处理"
+            android:textColor="@color/grey300"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_view_dormitory_activity_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/text_view_dormitory_activity_create_time"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:text="点滴用户"
+            android:textColor="@color/grey300"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/text_view_dormitory_activity_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/text_view_dormitory_activity_status"
+            android:layout_toRightOf="@id/text_view_dormitory_activity_username"
+            android:paddingTop="16dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/grey300"
+            android:textSize="22sp"
+            android:text="今天下午5点打击都别出寝室，要打扫卫生，准备迎接检查"
+            />
+
+        <TextView
+            android:id="@+id/text_view_dormitory_activity_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/text_view_dormitory_activity_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/grey300"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="2017年03月15日 22:00"/>
+
+        <TextView
+            android:id="@+id/text_view_dormitory_activity_time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_dormitory_activity_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/text_view_dormitory_activity_time"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/grey300"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="活动时间"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

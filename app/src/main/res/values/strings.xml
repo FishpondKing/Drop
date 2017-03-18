@@ -2,6 +2,7 @@
     <string name="app_name">点滴</string>
     <string name="bottom_bar_diary">日志</string>
     <string name="bottom_bar_culture">文化</string>
+    <string name="bottom_bar_photo_wall">照片墙</string>
     <string name="bottom_bar_life">生活</string>
     <string name="bottom_bar_message">消息</string>
     <string name="bottom_bar_more_options">更多</string>
@@ -11,7 +12,7 @@
     </string-array>
     <string-array name="tab_layout_life">
         <item>财务</item>
-        <item>值日</item>
+        <item>活动</item>
     </string-array>
     <string-array name="tab_layout_message">
         <item>通知</item>
@@ -34,7 +35,7 @@
         <item>注册</item>
     </string-array>
     <string name="user_tel_wrong">请输入正确的手机号</string>
-    <string name="user_name_wrong">用户名为数字，字母，汉字，长度为1~12位</string>
+    <string name="user_name_wrong">用户名为数字，字母，汉字，长度为1~5位</string>
     <string name="user_password_wrong">密码为数字，字母，长度为6~12位</string>
     <string name="user_password_check_wrong">确认密码与密码不一致</string>
     <string name="get_validate_code_success">获取验证码成功</string>
@@ -59,5 +60,52 @@
     <string name="setting">设置</string>
     <string name="report">意见反馈</string>
     <string name="write_diary">写日志</string>
-
+    <string name="submit">提交</string>
+    <string name="diary_title">标题</string>
+    <string name="write_diary_content">写日志...</string>
+    <string name="submit_fail">提交失败</string>
+    <string name="diary_title_wrong">日志标题中不能含有空字符</string>
+    <string name="submit_diary_top_photo_wrong">图片上传失败</string>
+    <string name="submit_success">提交成功</string>
+    <string name="cant_find_local_photo">无法找到该本地图片</string>
+    <string name="diary_submitting">日志上传中...</string>
+    <string name="submit_photo">传照片</string>
+    <string name="photo_submitting">照片(%1$d/%2$d)上传中...</string>
+    <string name="submit_photo_success">照片上传成功</string>
+    <string name="no_diary">该宿舍还没有日志</string>
+    <string name="no_photo">该宿舍还没有上传照片</string>
+    <string name="loading">加载中...</string>
+    <string name="pull_up_for_more">上拉加载更多</string>
+    <string name="scrolled_to_bottom">已经到达底部</string>
+    <string name="my_diary">我的日志</string>
+    <string name="my_photo">我的照片</string>
+    <string name="change_head">修改头像</string>
+    <string name="username_">用户名：</string>
+    <string name="change">修改</string>
+    <string name="userId_">用户账号：</string>
+    <string name="join_time_">加入时间</string>
+    <string name="write_diary_count_">已记录的日志数</string>
+    <string name="submit_photo_count_">已上传的照片数</string>
+    <string name="user_center">个人中心</string>
+    <string name="userhead_submitting">头像上传中...</string>
+    <string name="change_userhead_success">头像修改成功</string>
+    <string name="change_userhead_fail">头像修改失败</string>
+    <string name="link_network_fail">网络连接失败</string>
+    <string name="change_username_success">用户名修改成功</string>
+    <string name="change_username_fail">用户名修改失败</string>
+    <string name="dormitory_money_remain">舍费余额</string>
+    <string name="month_money_out">本月支出</string>
+    <string name="month_money_in">本月收入</string>
+    <string name="money_out">支出</string>
+    <string name="money_in">收入</string>
+    <string name="money">金额</string>
+    <string name="money_out_reason">支出原因</string>
+    <string name="money_in_reason">收入来源</string>
+    <string name="please_input_valid_data">请输入有效的数据</string>
+    <string name="no_money_event">该宿舍还没有记账</string>
+    <string name="money_event_detail">舍费明细</string>
+    <string name="post_activity">发布活动</string>
+    <string name="my_dormitory_activity">我的活动</string>
+    <string name="all_dormitory_activity">全部活动</string>
+    <string name="no_dormitory_activity">还没有活动发布</string>
 </resources>

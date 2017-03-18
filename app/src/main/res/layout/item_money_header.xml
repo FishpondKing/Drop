@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="234dp"
+    android:background="@color/blue500">
+
+    <!--舍费余额-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/text_view_money_dormitory_remain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:textColor="@color/grey200"
+            android:text="0.00"/>
+
+        <TextView
+            android:id="@+id/text_view_money_dormitory_remain_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey200"
+            android:text="@string/dormitory_money_remain"/>
+
+    </LinearLayout>
+    <!--舍费余额END-->
+
+    <!--本月收入和支出-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <!--本月支出-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_month_money_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey200"
+                android:textSize="25sp"
+                android:text="0.00"/>
+
+            <TextView
+                android:id="@+id/text_view_month_money_out_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey200"
+                android:text="@string/month_money_out"/>
+
+        </LinearLayout>
+        <!--本月支出END-->
+
+        <!--本月收入-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_month_money_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey200"
+                android:textSize="25sp"
+                android:text="0.00"/>
+
+            <TextView
+                android:id="@+id/text_view_month_money_in_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey200"
+                android:text="@string/month_money_in"/>
+
+        </LinearLayout>
+        <!--本月收入END-->
+    </LinearLayout>
+
+    <ImageView
+        android:layout_marginTop="6dp"
+        android:src="@color/grey200"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_money_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/text_view_money_event_detail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="15sp"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:text="@string/money_event_detail"
+            android:drawableLeft="@drawable/ic_money_event_detail"
+            />
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

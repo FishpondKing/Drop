@@ -13,16 +13,18 @@
         android:background="@color/blue500">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circle_image_view_user_head"
+            android:id="@+id/circle_image_view_more_options_user_head"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_user_head"
+            app:civ_fill_color="@color/gallery_white"
             app:civ_border_width="2dp"
             app:civ_border_color="@color/grey300"/>
 
         <TextView
-            android:layout_below="@id/circle_image_view_user_head"
+            android:id="@+id/text_view_more_options_user_head"
+            android:layout_below="@+id/circle_image_view_more_options_user_head"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,324 +33,200 @@
             android:textSize="15sp"
             android:textColor="@color/grey200"/>
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/image_button_user_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_more_options_edit_user_info"/>
+            android:src="@drawable/ic_more_options_edit_user_info"
+            android:background="#00000000"/>
 
     </RelativeLayout>
 
-    <!--室友列表-->
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_view_more_options_roommates"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:cardElevation="2dp"
-        android:background="@color/grey200">
-
-        <LinearLayout
-            android:id="@+id/linear_layout_more_options_roommates"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_view_roommates_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="5dp"
-                android:text="我的小伙伴们"
-                android:textSize="15sp"
-                android:textColor="@color/grey500"/>
-
-            <LinearLayout
-                android:id="@+id/linear_layout_more_options_line_1_roommates"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_1_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_1_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友1"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_2_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_2_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友2"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_3_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_3_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友3"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_4_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_4_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友4"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear_layout_more_options_line_2_roommates"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_5_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_5_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友5"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_6_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_6_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友6"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_7_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_7_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友7"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_image_view_roommate_8_head"
-                        android:src="@drawable/ic_user_head"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="@color/grey300"/>
-
-                    <TextView
-                        android:id="@+id/text_view_roommate_8_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="室友8"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-    <!--室友列表END-->
-
-    <!--选项列表-->
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        app:cardElevation="2dp"
-        android:background="@color/grey200">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_view_more_options_night_model"
+            <!--室友列表-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_more_options_roommates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="10dp"
-                android:textSize="15sp"
-                android:text="@string/night_model"
-                android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_more_options_night"
-                android:drawablePadding="20dp"/>
+                android:layout_marginTop="10dp"
+                app:cardElevation="2dp"
+                android:background="@color/grey200">
 
-            <TextView
-                android:id="@+id/text_view_more_options_setting"
+                <LinearLayout
+                    android:id="@+id/linear_layout_more_options_roommates"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_view_roommates_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="我的小伙伴们"
+                        android:textSize="15sp"/>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_more_options_line_1_roommates"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_0"
+                            android:layout="@layout/item_more_options_roommate_info_0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_1"
+                            android:layout="@layout/item_more_options_roommate_info_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_2"
+                            android:layout="@layout/item_more_options_roommate_info_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_3"
+                            android:layout="@layout/item_more_options_roommate_info_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_more_options_line_2_roommates"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_4"
+                            android:layout="@layout/item_more_options_roommate_info_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_5"
+                            android:layout="@layout/item_more_options_roommate_info_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_6"
+                            android:layout="@layout/item_more_options_roommate_info_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ViewStub
+                            android:id="@+id/view_stub_more_options_roommate_7"
+                            android:layout="@layout/item_more_options_roommate_info_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <!--室友列表END-->
+
+            <!--选项列表-->
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:paddingLeft="10dp"
-                android:textSize="15sp"
-                android:text="@string/setting"
-                android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_more_options_setting"
-                android:drawablePadding="20dp"/>
+                app:cardElevation="2dp"
+                android:background="@color/grey200">
 
-            <TextView
-                android:id="@+id/text_view_more_options_report"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/button_more_options_my_diary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="@string/my_diary"
+                        android:gravity="center_vertical"
+                        android:background="@color/gallery_white"
+                        android:textSize="15sp"
+                        android:drawableLeft="@drawable/ic_more_options_my_diary"
+                        android:drawablePadding="15dp"
+                        android:elevation="2dp"/>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/button_more_options_my_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/my_photo"
+                        android:gravity="center_vertical"
+                        android:background="@color/gallery_white"
+                        android:textSize="15sp"
+                        android:drawableLeft="@drawable/ic_more_options_my_photo"
+                        android:drawablePadding="15dp"
+                        android:elevation="2dp"/>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/button_more_options_feedback"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="@string/report"
+                        android:gravity="center_vertical"
+                        android:background="@color/gallery_white"
+                        android:textSize="15sp"
+                        android:drawableLeft="@drawable/ic_more_options_report"
+                        android:drawablePadding="15dp"
+                        android:elevation="2dp"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <!--选项列表END-->
+
+            <!--注销按钮-->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/button_more_options_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="10dp"
+                android:layout_margin="10dp"
+                android:elevation="2dp"
                 android:textSize="15sp"
-                android:text="@string/report"
-                android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_more_options_report"
-                android:drawablePadding="20dp"/>
-
-            <TextView
-                android:id="@+id/text_view_more_options_logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="10dp"
-                android:textSize="15sp"
-                android:text="@string/logout"
-                android:textColor="@color/red500"
-                android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_more_options_logout"
-                android:drawableTint="@color/red500"
-                android:drawablePadding="20dp"/>
+                android:textColor="@color/gallery_white"
+                android:background="@color/red500"
+                android:gravity="center"
+                android:text="@string/logout"/>
+            <!--注销按钮END-->
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
-    <!--选项列表END-->
+    </ScrollView>
 
 </LinearLayout>

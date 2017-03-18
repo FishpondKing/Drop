@@ -33,6 +33,7 @@ public class SpUtils {
                 .putString("userName", user.getUserName())
                 .putBoolean("userIsLeader", user.isLeader())
                 .putString("userDormitoryId", user.getDormitoryId())
+                .putString("userHeadPhotoUrl", user.getUserHeadPhotoUrl())
                 .apply();
     }
 
@@ -70,6 +71,7 @@ public class SpUtils {
         user.setUserName(sp.getString("userName", ""));
         user.setLeader(sp.getBoolean("userIsLeader", false));
         user.setDormitoryId(sp.getString("userDormitoryId", ""));
+        user.setUserHeadPhotoUrl(sp.getString("userHeadPhotoUrl", ""));
     }
 
     /**
@@ -86,5 +88,26 @@ public class SpUtils {
         dormitory.setId(sp.getString("dormitoryId", ""));
         dormitory.setName(sp.getString("dormitoryName", ""));
         dormitory.setLeader(sp.getString("dormitoryLeader", ""));
+    }
+
+    public static void clearUserState(Context context){
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString("userId", "")
+                .putString("userTel", "")
+                .putString("userName", "")
+                .putBoolean("userIsLeader", false)
+                .putString("userDormitoryId", "")
+                .putString("userHeadPhotoUrl", "")
+                .apply();
+    }
+
+    public static void clearDormitoryState(Context context) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString("dormitoryId", "")
+                .putString("dormitoryName", "")
+                .putString("dormitoryLeader", "")
+                .apply();
     }
 }
